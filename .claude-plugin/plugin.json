@@ -1,0 +1,8 @@
+{
+  "name": "sdlight",
+  "description": "Lightweight standalone SDLC (seed, spec, plan, feature doc): fast idea capture, conversational brainstorm-to-spec, automatic refinement, and automatic promotion to living feature docs.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Diddi"
+  }
+}

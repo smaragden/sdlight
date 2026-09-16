@@ -1,0 +1,16 @@
+{
+  "name": "sdlight-marketplace",
+  "owner": {
+    "name": "Diddi"
+  },
+  "metadata": {
+    "description": "Marketplace serving the sdlight plugin, seed/spec/plan/feature-doc SDLC skills for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "sdlight",
+      "source": "./",
+      "description": "Lightweight standalone SDLC: seed, spec, plan, feature doc."
+    }
+  ]
+}
