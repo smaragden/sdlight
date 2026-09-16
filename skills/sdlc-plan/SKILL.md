@@ -33,6 +33,11 @@ gate, and planning around it produces a plan that has to be redone.
   Name it and let the gate decide whether a human needs to see it.
 - Say how each step is verified before saying what it changes. A step
   with no verification is not a step.
+- Plain prose and punctuation throughout. No arrows, no symbols standing
+  in for words. This file outlives the feature and every later plan
+  copies its habits.
+- When plan review returns HOLD and the user answers, move each answered
+  line from Risks to Decisions with the date, then re-run the review.
 
 ## What this skill does not do
 

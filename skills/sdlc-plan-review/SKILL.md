@@ -32,7 +32,8 @@ possible. Nothing else.
 
 Write one of these, and nothing else after it.
 
-- `PASS` when checks 1 to 4 find nothing and Risks is empty.
+- `PASS` when checks 1 to 4 find nothing and Risks is empty. Decisions
+  may hold anything. Those are answered, not open.
 - `HOLD` followed by the assumptions from Risks, one per line, when
   checks 1 to 4 find nothing but Risks lists something. A human answers
   these before execution starts.
