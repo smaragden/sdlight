@@ -116,13 +116,20 @@ marketplace command at this folder's local path.
 
 ## Install on Pi
 
+For local development, from the project that will use it:
+
+```
+pi install ../path/to/sdlight -l
+```
+
+That writes the package into `.pi/settings.json`. Pi treats project-local
+packages as untrusted until you approve them, so the first `pi` run in
+that project asks, or you pass `--approve`.
+
+From a git host, or from npm once published:
+
 ```
 pi install git:<git-host>/<you>/sdlight
-```
-
-or, once published to npm:
-
-```
 pi install npm:sdlight
 ```
 
@@ -134,6 +141,9 @@ you'd rather not package this at all:
 ```json
 { "skills": ["../.claude/skills"] }
 ```
+
+Pi's loader accepts the eight skills with no warnings (checked against
+Pi 0.85.1). It ignores the `context` and `model` keys, see Model routing.
 
 ## Templates
 
