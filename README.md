@@ -107,7 +107,7 @@ plan, and diff, so the context-light rule holds on both.
 ## Install on Claude Code
 
 ```
-/plugin marketplace add <path-or-url-to-this-repo>
+/plugin marketplace add smaragden/sdlight
 /plugin install sdlight@sdlight-marketplace
 ```
 
@@ -129,7 +129,7 @@ that project asks, or you pass `--approve`.
 From a git host, or from npm once published:
 
 ```
-pi install git:<git-host>/<you>/sdlight
+pi install git:github.com/smaragden/sdlight
 pi install npm:sdlight
 ```
 
