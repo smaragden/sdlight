@@ -24,7 +24,8 @@ created: <date>
 <the paragraph>
 ```
 
-3. Confirm in one short line ("Seeded as `seeds/<slug>.md`.") and stop.
+3. Commit the file on its own, message `Seed: <slug>`.
+4. Confirm in one short line ("Seeded as `seeds/<slug>.md`.") and stop.
    Do not brainstorm it, do not ask clarifying questions, do not expand
    it into a spec. If the user wants that, they'll ask for a brainstorm
    session (sdlc-brainstorm) separately, possibly much later.

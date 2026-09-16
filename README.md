@@ -53,15 +53,27 @@ In pipeline order.
 |---|---|---|
 | `seed-capture` | On any quick or rough idea | Writes `seeds/<slug>.md`, nothing more |
 | `sdlc-brainstorm` | On "let's brainstorm X" or working a seed | Converges a seed into `specs/<slug>.md`, forks tangents into new seeds |
-| `sdlc-refine` | Automatically after every brainstorm session | Dedupes and prunes seeds and specs, regenerates `PROJECT.md` |
+| `sdlc-refine` | Automatically after every brainstorm and every promotion | Dedupes and prunes seeds and specs, regenerates `PROJECT.md` |
 | `sdlc-plan` | On "plan <feature>" for a spec | Writes `plans/<slug>.md`, hands off to plan review |
 | `sdlc-plan-review` | Automatically after sdlc-plan | Checks plan coverage against the spec in fresh context. PASS, GAPS, or HOLD |
 | `sdlc-step-review` | After each executed plan step | Checks the diff against that one step. PASS or FAIL |
 | `sdlc-final-review` | After the last step passes | Checks the implementation against the spec, not the plan. PASS, FAIL, or HOLD |
-| `sdlc-promote` | Automatically when final review passes | Writes `docs/features/<slug>.md`, deletes the source seed and spec, lands atomically with the code |
+| `sdlc-promote` | Automatically when final review passes | Writes `docs/features/<slug>.md`, deletes the source seed and spec, commits last on the feature branch |
 
 Execution itself is not a skill. You implement each plan step however
 you like, and sdlight only supplies the gate between steps.
+
+## Git
+
+Git is the only history. Every skill that writes a file commits it, so
+nothing sdlight produces exists only in a working tree.
+
+- Seeds, specs, and refine passes commit on whatever branch you're on.
+- A passing plan review creates a branch named after the slug and
+  commits the plan there.
+- Each executed step is one commit on that branch, so step review sees
+  one step's diff.
+- Promotion is the branch's last commit. Merging is yours to do.
 
 ## Human gates
 

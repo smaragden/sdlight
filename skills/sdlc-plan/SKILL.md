@@ -18,6 +18,11 @@ gate, and planning around it produces a plan that has to be redone.
    name real files and functions in the steps, no more.
 2. Write `plans/<slug>.md` from `templates/plan-template.md`.
 3. Hand the slug to sdlc-plan-review. Do not begin execution yourself.
+4. When the review returns PASS, create a branch named `<slug>` from the
+   current branch, commit the plan on it with message `Plan: <slug>`,
+   and stop. Execution starts on that branch, one commit per step, so
+   each step review sees exactly one step's diff and promotion can land
+   as the branch's last commit.
 
 ## Writing the plan
 

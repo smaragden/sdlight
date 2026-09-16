@@ -1,6 +1,6 @@
 ---
 name: sdlc-refine
-description: Run the refinement pass across the whole seed vault and spec set. Find duplicate ideas, surface correlations, clean up outdated seeds and specs, and regenerate the project doc. Trigger this automatically at the end of every sdlc-brainstorm session, and also whenever the user explicitly asks to "refine", "clean up the seeds", "tidy the vault", or "update the project doc". Keep this pass narrow and mechanical. It is a maintenance step, not a brainstorm, and it should not invent new feature ideas or rewrite specs' substance.
+description: Run the refinement pass across the whole seed vault and spec set. Find duplicate ideas, surface correlations, clean up outdated seeds and specs, and regenerate the project doc. Trigger this automatically at the end of every sdlc-brainstorm session, after every sdlc-promote, and whenever the user explicitly asks to "refine", "clean up the seeds", "tidy the vault", or "update the project doc". Keep this pass narrow and mechanical. It is a maintenance step, not a brainstorm, and it should not invent new feature ideas or rewrite specs' substance.
 ---
 
 # SDLC refinement pass
@@ -45,6 +45,12 @@ any spec's content.
   are not.
 - Does not invent history. If something's ambiguous, ask rather than
   guess.
+
+## Commit
+
+Commit everything this pass changed in one commit, message
+`Refine: <one line saying what changed>`. If nothing changed, there is
+no commit.
 
 ## Output
 

@@ -27,15 +27,17 @@ stop and say so.
 3. **Delete the source seed** at `seeds/<slug>.md`, if it still exists.
    The brainstorm session usually deletes it on promotion to spec. Skip
    this step in that case.
-4. **Land atomically.** The feature doc write and the two deletions go in
-   the same commit or PR as the implementation, not a follow-up commit.
-   Leave the plan document alone. It stays as the historical record of
-   how the feature was built.
+4. **Commit on the feature branch.** The feature doc write and the two
+   deletions go in one commit, message `Promote: <slug>`, as the last
+   commit on the branch before it merges. Never on main after the merge,
+   and never in a later PR. Leave the plan document alone. It stays as
+   the historical record of how the feature was built.
+5. **Run sdlc-refine** so the project doc stops listing this feature as
+   an open thread and starts listing it in the feature map.
 
 ## What this skill does not do
 
 - Does not write or touch the plan doc.
-- Does not run the refinement pass. That has its own trigger, tied to
-  brainstorm sessions.
+- Does not merge the branch. That's the user's call, here or in a PR.
 - Does not ask for confirmation before deleting the seed and spec. Being
   automatic is the point.
