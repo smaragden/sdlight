@@ -22,9 +22,14 @@ skills/
   seed-capture/SKILL.md
   sdlc-brainstorm/SKILL.md
   sdlc-refine/SKILL.md
+  sdlc-plan/SKILL.md
+  sdlc-plan-review/SKILL.md
+  sdlc-step-review/SKILL.md
+  sdlc-final-review/SKILL.md
   sdlc-promote/SKILL.md
 templates/
   spec-template.md
+  plan-template.md
   feature-doc-template.md
   project-doc-template.md
 ```
@@ -43,12 +48,50 @@ plans/                  implementation plans (kept permanently, the "how" record
 
 ## Skills included
 
+In pipeline order.
+
 | Skill | Fires | Does |
 |---|---|---|
 | `seed-capture` | On any quick or rough idea | Writes `seeds/<slug>.md`, nothing more |
 | `sdlc-brainstorm` | On "let's brainstorm X" or working a seed | Converges a seed into `specs/<slug>.md`, forks tangents into new seeds |
 | `sdlc-refine` | Automatically after every brainstorm session | Dedupes and prunes seeds and specs, regenerates `PROJECT.md` |
+| `sdlc-plan` | On "plan <feature>" for a spec | Writes `plans/<slug>.md`, hands off to plan review |
+| `sdlc-plan-review` | Automatically after sdlc-plan | Checks plan coverage against the spec in fresh context. PASS, GAPS, or HOLD |
+| `sdlc-step-review` | After each executed plan step | Checks the diff against that one step. PASS or FAIL |
+| `sdlc-final-review` | After the last step passes | Checks the implementation against the spec, not the plan. PASS, FAIL, or HOLD |
 | `sdlc-promote` | Automatically when final review passes | Writes `docs/features/<slug>.md`, deletes the source seed and spec, lands atomically with the code |
+
+Execution itself is not a skill. You implement each plan step however
+you like, and sdlight only supplies the gate between steps.
+
+## Human gates
+
+A human is asked at exactly these points, and nowhere else.
+
+- The spec's Open questions section is non-empty when planning starts.
+- Plan review returns HOLD: the plan's Risks section lists an assumption.
+- Plan review returns GAPS three times for the same plan.
+- Step review returns FAIL three times for the same step.
+- Final review returns FAIL or HOLD.
+
+Everything else runs without asking. Promotion in particular never asks.
+
+## Model routing
+
+Reviewers that check one document against another run on a cheaper
+model. Everything that authors, and the final review, inherit the
+session's model.
+
+| Stage | Model | Context |
+|---|---|---|
+| brainstorm, plan, promote, refine | session default | inline |
+| plan review, step review | `sonnet` | fresh (`context: fork`) |
+| final review | session default | fresh (`context: fork`) |
+
+The `model` and `context` frontmatter keys are Claude Code only. Pi
+ignores them, so on Pi every reviewer runs inline on the session model.
+The skills' instructions still tell the reviewer to read only the spec,
+plan, and diff, so the context-light rule holds on both.
 
 ## Install on Claude Code
 
@@ -90,20 +133,6 @@ this in.
 
 ## Not built yet
 
-The pipeline's middle three stages have no skill yet. They will be built
-standalone, inside this plugin, not by calling out to another plugin's
-planning or review skills.
-
-- Plan. Writes `plans/<slug>.md` and checks it hard against the spec's
-  Behavior and Acceptance criteria before execution starts. Asks a human
-  when the plan is ambiguous or drifts from the spec.
-- Per-step review. A lightweight gate between execution steps.
-- Final review. The full implementation checked against the original
-  spec, not only the plan. Passing this is what triggers `sdlc-promote`.
-
-Two rules are still only principles, with no concrete threshold written:
-
-- HITL trigger conditions. Currently "if needed". Needs a definition in
-  terms of spec ambiguity, reviewer disagreement, or risk.
-- Model routing. Currently "cheapest viable model per task". Needs either
-  a fixed mapping per stage or a cheap complexity-classification step.
+- A Pi extension shim so `model` and `context: fork` are honored there.
+- Feature sunsetting. Feature docs carry no `status` field until there is
+  a workflow that sets one.
