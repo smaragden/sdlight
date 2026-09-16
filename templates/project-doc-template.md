@@ -1,6 +1,6 @@
 ---
 generated: <date, filled in by the refinement agent each run>
-source: derived from docs/features/*.md. Do not hand-edit.
+source: derived from docs/sdlight/features/*.md. Do not hand-edit.
 ---
 
 # Project: <project name>

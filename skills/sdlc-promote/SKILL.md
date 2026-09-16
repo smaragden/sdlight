@@ -17,16 +17,16 @@ stop and say so.
 
 ## Steps
 
-1. **Write the feature doc** at `docs/features/<slug>.md`, using
-   `templates/feature-doc-template.md`. Base every section on what was
-   implemented. Read the real code and behavior, not the spec's
-   original intent. Where implementation deviated from the spec, the
+1. **Write the feature doc** at `docs/sdlight/features/<slug>.md`, using
+   `docs/sdlight/templates/feature-doc-template.md`. Base every section
+   on what was implemented. Read the real code and behavior, not the
+   spec's original intent. Where implementation deviated from the spec, the
    feature doc records the deviation as current reality without flagging
    or explaining it. The plan and git history hold that.
-2. **Delete the source spec** at `specs/<slug>.md`.
-3. **Delete the source seed** at `seeds/<slug>.md`, if it still exists.
-   The brainstorm session usually deletes it on promotion to spec. Skip
-   this step in that case.
+2. **Delete the source spec** at `docs/sdlight/specs/<slug>.md`.
+3. **Delete the source seed** at `docs/sdlight/seeds/<slug>.md`, if it
+   still exists. The brainstorm session usually deletes it on promotion
+   to spec. Skip this step in that case.
 4. **Commit on the feature branch.** The feature doc write and the two
    deletions go in one commit, message `Promote: <slug>`, as the last
    commit on the branch before it merges. Never on main after the merge,

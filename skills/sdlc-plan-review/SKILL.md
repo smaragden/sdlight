@@ -1,6 +1,6 @@
 ---
 name: sdlc-plan-review
-description: Check an implementation plan in plans/ against its spec in specs/ before any code is written. Runs in fresh context so the reviewer has not seen the planning conversation. Use immediately after sdlc-plan writes a plan, and whenever the user asks to review or re-check a plan against its spec. Output is PASS, or a list of gaps sent back to the planner, or a question for a human.
+description: Check an implementation plan in docs/sdlight/plans/ against its spec in docs/sdlight/specs/ before any code is written. Runs in fresh context so the reviewer has not seen the planning conversation. Use immediately after sdlc-plan writes a plan, and whenever the user asks to review or re-check a plan against its spec. Output is PASS, or a list of gaps sent back to the planner, or a question for a human.
 context: fork
 model: sonnet
 ---
@@ -9,9 +9,9 @@ model: sonnet
 
 You are reviewing a plan against its spec. You have not seen the
 conversation that produced either, and that is the point. Read only
-`specs/<slug>.md` and `plans/<slug>.md` for the slug you were given,
-plus any code file a plan step names if you need to confirm the step is
-possible. Nothing else.
+`docs/sdlight/specs/<slug>.md` and `docs/sdlight/plans/<slug>.md` for the
+slug you were given, plus any code file a plan step names if you need to
+confirm the step is possible. Nothing else.
 
 ## Checks, in order
 

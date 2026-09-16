@@ -1,16 +1,16 @@
 ---
 name: sdlc-step-review
-description: Lightweight gate between execution steps. After one numbered step of a plan in plans/ has been implemented, check the change against that step alone. Use after every step, before starting the next. Runs in fresh context with only the plan, the step number, and the diff. Output is PASS or FAIL with reasons.
+description: Lightweight gate between execution steps. After one numbered step of a plan in docs/sdlight/plans/ has been implemented, check the change against that step alone. Use after every step, before starting the next. Runs in fresh context with only the plan, the step number, and the diff. Output is PASS or FAIL with reasons.
 context: fork
 model: sonnet
 ---
 
 # SDLC step review
 
-You were given a slug and a step number. Read `plans/<slug>.md`, find
-that step, and look at the uncommitted or unpushed diff for it. Do not
-read the spec. This gate checks the step, not the feature. The final
-review checks the feature.
+You were given a slug and a step number. Read
+`docs/sdlight/plans/<slug>.md`, find that step, and look at the
+uncommitted or unpushed diff for it. Do not read the spec. This gate
+checks the step, not the feature. The final review checks the feature.
 
 ## Checks
 

@@ -1,13 +1,13 @@
 ---
 name: sdlc-plan
-description: Turn an approved spec in specs/ into an implementation plan in plans/. Use when the user asks to plan a spec, says "plan <feature>", or wants to start implementing something that has a spec but no plan yet. Do not use this for ideas without a spec (that's sdlc-brainstorm). Writing the plan always ends by handing it to sdlc-plan-review. Never start executing a plan that hasn't passed that gate.
+description: Turn an approved spec in docs/sdlight/specs/ into an implementation plan in docs/sdlight/plans/. Use when the user asks to plan a spec, says "plan <feature>", or wants to start implementing something that has a spec but no plan yet. Do not use this for ideas without a spec (that's sdlc-brainstorm). Writing the plan always ends by handing it to sdlc-plan-review. Never start executing a plan that hasn't passed that gate.
 ---
 
 # SDLC plan: spec to plan
 
 ## Preconditions
 
-The spec at `specs/<slug>.md` exists. If its Open questions section
+The spec at `docs/sdlight/specs/<slug>.md` exists. If its Open questions section
 lists anything, stop and put those questions to the user before writing
 a line of the plan. An open question in the spec is the first human
 gate, and planning around it produces a plan that has to be redone.
@@ -16,7 +16,8 @@ gate, and planning around it produces a plan that has to be redone.
 
 1. Read the spec. Then read the code the feature will touch. Enough to
    name real files and functions in the steps, no more.
-2. Write `plans/<slug>.md` from `templates/plan-template.md`.
+2. Write `docs/sdlight/plans/<slug>.md` from
+   `docs/sdlight/templates/plan-template.md`.
 3. Hand the slug to sdlc-plan-review. Do not begin execution yourself.
 4. When the review returns PASS, create a branch named `<slug>` from the
    current branch, commit the plan on it with message `Plan: <slug>`,

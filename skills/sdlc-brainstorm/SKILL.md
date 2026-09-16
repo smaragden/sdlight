@@ -1,6 +1,6 @@
 ---
 name: sdlc-brainstorm
-description: Run a brainstorming session that takes a seed (or a fresh idea) and converges it into a feature spec in specs/. Use whenever the user wants to develop an idea into something buildable, says "let's brainstorm X", picks a seed to work on, or asks to turn a rough idea into a spec. This is a conversation, not a form to fill out. Find the essence of the idea before writing anything down. Also use this skill's out-of-scope handling whenever a brainstorm session surfaces a tangent, so it gets captured as a new seed instead of lost or crammed into the spec.
+description: Run a brainstorming session that takes a seed (or a fresh idea) and converges it into a feature spec in docs/sdlight/specs/. Use whenever the user wants to develop an idea into something buildable, says "let's brainstorm X", picks a seed to work on, or asks to turn a rough idea into a spec. This is a conversation, not a form to fill out. Find the essence of the idea before writing anything down. Also use this skill's out-of-scope handling whenever a brainstorm session surfaces a tangent, so it gets captured as a new seed instead of lost or crammed into the spec.
 ---
 
 # SDLC brainstorm: seed to spec
@@ -24,16 +24,16 @@ are tangled together.
 3. **Watch for out-of-scope tangents as they come up.** The moment
    something surfaces that isn't core to this feature, whether a related
    but separate idea or a "we should also...", say so and capture it as a
-   new seed right away. Same format as seed-capture: a short paragraph in
-   `seeds/<slug>.md`. Don't let it bloat the spec, and don't lose it
-   either. Mention it to the user in passing ("that's a separate thing,
-   I've seeded it") and keep going.
+   new seed right away. Same format as seed-capture: a short paragraph
+   in `docs/sdlight/seeds/<slug>.md`. Don't let it bloat the spec, and
+   don't lose it either. Mention it to the user in passing ("that's a
+   separate thing, I've seeded it") and keep going.
 4. **Write the spec** once the essence is clear, using
-   `templates/spec-template.md`. Fill every section. If a section is
-   empty (no open questions, say), state that under the heading rather
-   than omitting it.
-5. **Save** to `specs/<slug>.md`, matching the originating seed's slug
-   where there was one.
+   `docs/sdlight/templates/spec-template.md`. Fill every section. If a
+   section is empty (no open questions, say), state that under the
+   heading rather than omitting it.
+5. **Save** to `docs/sdlight/specs/<slug>.md`, matching the originating
+   seed's slug where there was one.
 6. **Delete the seed this spec came from**, if there was one. The spec
    now supersedes it. Leave unrelated seeds alone.
 7. **Commit** the spec, the seed deletion, and any seeds forked during

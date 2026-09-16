@@ -5,9 +5,9 @@ description: Run the refinement pass across the whole seed vault and spec set. F
 
 # SDLC refinement pass
 
-A bounded, mechanical gardening pass over `seeds/`, `specs/`, and
-`docs/features/`. Not a creative task, and not an excuse to re-litigate
-any spec's content.
+A bounded, mechanical gardening pass over `docs/sdlight/seeds/`,
+`docs/sdlight/specs/`, and `docs/sdlight/features/`. Not a creative
+task, and not an excuse to re-litigate any spec's content.
 
 ## Scope of this pass
 
@@ -24,7 +24,7 @@ any spec's content.
      is a judgment call. Do not merge specs without asking.
    - Delete specs that are stale, meaning a shipped feature doc or another
      spec has superseded them.
-3. **Feature docs** (`docs/features/`)
+3. **Feature docs** (`docs/sdlight/features/`)
    - A feature doc describes the code as it is. Where a newer feature
      doc or the code itself contradicts a statement in an older doc,
      correct that statement in place. Do this without asking. Change
@@ -34,9 +34,9 @@ any spec's content.
      would describe them better, propose the merge to the user. If
      confirmed, write the merged doc and delete the old ones outright. No
      stubs, no `superseded-by` markers. Git history is the record.
-4. **Project doc** (`PROJECT.md` or equivalent)
-   - Regenerate from the current `docs/features/*.md` set, using
-     `templates/project-doc-template.md`.
+4. **Project doc** (`docs/sdlight/PROJECT.md` or equivalent)
+   - Regenerate from the current `docs/sdlight/features/*.md` set, using
+     `docs/sdlight/templates/project-doc-template.md`.
    - Anchor on the previous version for structure and phrasing. Unchanged
      facts stay worded the same, so diffs show only what
      changed. This is not a blank-page rewrite each time.

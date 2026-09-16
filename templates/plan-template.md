@@ -1,6 +1,6 @@
 ---
 plan: <feature-name>
-spec: specs/<feature-name>.md
+spec: docs/sdlight/specs/<feature-name>.md
 ---
 
 # Plan: <feature name>

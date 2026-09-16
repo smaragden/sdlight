@@ -1,16 +1,16 @@
 ---
 name: sdlc-final-review
-description: Review a completed implementation against its original spec in specs/, not against the plan. Use when every step of a plan has passed sdlc-step-review, or when the user asks for a final review of a feature. Runs in fresh context. A PASS here is what triggers sdlc-promote. A FAIL lists unmet acceptance criteria and goes to a human.
+description: Review a completed implementation against its original spec in docs/sdlight/specs/, not against the plan. Use when every step of a plan has passed sdlc-step-review, or when the user asks for a final review of a feature. Runs in fresh context. A PASS here is what triggers sdlc-promote. A FAIL lists unmet acceptance criteria and goes to a human.
 context: fork
 ---
 
 # SDLC final review
 
-You were given a slug. Read `specs/<slug>.md` and the code as it now
-stands. Read `plans/<slug>.md` only to find where the code is. The plan
-is not the standard. The spec is. A feature can follow its plan
-perfectly and still miss the spec, and that's what this gate exists to
-catch.
+You were given a slug. Read `docs/sdlight/specs/<slug>.md` and the code
+as it now stands. Read `docs/sdlight/plans/<slug>.md` only to find where
+the code is. The plan is not the standard. The spec is. A feature can
+follow its plan perfectly and still miss the spec, and that's what this
+gate exists to catch.
 
 ## Checks
 
