@@ -4,13 +4,13 @@
     "name": "Diddi"
   },
   "metadata": {
-    "description": "Marketplace serving the sdlight plugin, seed/spec/plan/feature-doc SDLC skills for Claude Code."
+    "description": "Marketplace for the sdlight plugin."
   },
   "plugins": [
     {
       "name": "sdlight",
       "source": "./",
-      "description": "Lightweight standalone SDLC: seed, spec, plan, feature doc."
+      "description": "Lightweight SDLC for a solo developer. Seed, spec, plan, feature doc."
     }
   ]
 }

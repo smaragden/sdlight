@@ -1,7 +1,7 @@
 {
   "name": "sdlight",
   "version": "0.1.0",
-  "description": "Seed, spec, plan, feature-doc SDLC skills for Pi and Claude Code.",
+  "description": "Lightweight SDLC for a solo developer. Seed, spec, plan, feature doc.",
   "license": "MIT",
   "author": "Diddi",
   "keywords": ["pi-package", "pi-skill"],

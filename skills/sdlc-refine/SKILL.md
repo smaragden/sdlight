@@ -33,7 +33,7 @@ any spec's content.
    - Regenerate from the current `docs/features/*.md` set, using
      `templates/project-doc-template.md`.
    - Anchor on the previous version for structure and phrasing. Unchanged
-     facts stay worded the same, so diffs show only what actually
+     facts stay worded the same, so diffs show only what
      changed. This is not a blank-page rewrite each time.
 
 ## What this pass does not do

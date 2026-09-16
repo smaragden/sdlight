@@ -18,8 +18,8 @@ review checks the feature.
 2. The diff does not touch anything the step doesn't name. Unrelated
    cleanup, however tempting, is a FAIL, because it lands without a
    step to review it against.
-3. The verification the step names was run, and its output shows it
-   passing. If the output isn't in front of you, run it.
+3. Someone ran the verification the step names, and its output shows it
+   passing. If the output isn't in front of you, run it yourself.
 
 ## Verdict
 

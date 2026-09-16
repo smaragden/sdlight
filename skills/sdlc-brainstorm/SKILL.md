@@ -1,6 +1,6 @@
 ---
 name: sdlc-brainstorm
-description: Run a brainstorming session that takes a seed (or a fresh idea) and converges it into a feature spec in specs/. Use whenever the user wants to develop an idea into something buildable, says "let's brainstorm X", picks a seed to work on, or asks to turn a rough idea into a spec. This is a conversation, not a form to fill out. Find the actual essence of the idea before writing anything down. Also use this skill's out-of-scope handling whenever a brainstorm session surfaces a tangent, so it gets captured as a new seed instead of lost or crammed into the spec.
+description: Run a brainstorming session that takes a seed (or a fresh idea) and converges it into a feature spec in specs/. Use whenever the user wants to develop an idea into something buildable, says "let's brainstorm X", picks a seed to work on, or asks to turn a rough idea into a spec. This is a conversation, not a form to fill out. Find the essence of the idea before writing anything down. Also use this skill's out-of-scope handling whenever a brainstorm session surfaces a tangent, so it gets captured as a new seed instead of lost or crammed into the spec.
 ---
 
 # SDLC brainstorm: seed to spec
@@ -9,14 +9,14 @@ description: Run a brainstorming session that takes a seed (or a fresh idea) and
 
 This is a conversation aimed at finding the essence of an idea, not an
 interview that fills out a template. Ask questions that sharpen the idea.
-What problem is this actually solving? What does "done" look like? Where
+What problem is this solving? What does "done" look like? Where
 are the edges? Push back if the idea is vague or if two different ideas
 are tangled together.
 
 ## Flow
 
 1. **Start from the seed** (if one is named) or the user's fresh idea.
-   Read it, don't just restate it. Form your own read on what it's really
+   Read it, don't just restate it. Form your own read on what it's
    trying to do.
 2. **Converse until the essence is clear.** Don't rush to a spec. If the
    idea is already sharp, this can be short. If it's vague, keep asking
@@ -30,12 +30,12 @@ are tangled together.
    I've seeded it") and keep going.
 4. **Write the spec** once the essence is clear, using
    `templates/spec-template.md`. Fill every section. If a section is
-   genuinely empty (no open questions, say), state that under the heading
-   rather than omitting it.
+   empty (no open questions, say), state that under the heading rather
+   than omitting it.
 5. **Save** to `specs/<slug>.md`, matching the originating seed's slug
    where there was one.
-6. **Delete the source seed** it was promoted from, if any. The spec now
-   supersedes it. Leave unrelated seeds alone.
+6. **Delete the seed this spec came from**, if there was one. The spec
+   now supersedes it. Leave unrelated seeds alone.
 
 ## Writing the spec
 

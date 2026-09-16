@@ -24,4 +24,4 @@ Numbered. Each step is small enough to review on its own and names:
 ## Risks
 Where the plan could drift from the spec, where the spec is ambiguous,
 and what was assumed. Each assumption is a question the plan-review
-gate may bounce back to a human. Empty means nothing was assumed.
+gate may bounce back to a human. Empty means you assumed nothing.

@@ -16,7 +16,7 @@ The essential behavior the implementation must produce. Inputs, outputs,
 states, observable effects. This is what a plan gets checked against.
 
 ## Non-goals
-What this explicitly does not do. Anything that came up during
+What this does not do. Anything that came up during
 brainstorming and got forked into a seed belongs here as a one-line
 boundary marker. The seed file has the detail.
 

@@ -1,6 +1,6 @@
 ---
 name: sdlc-promote
-description: Promote a completed feature once its final implementation review has passed. Generate its feature doc from implementation reality, delete the source seed and spec, and land it all atomically with the code. Use this automatically the moment a final-review gate passes for a feature. Do not wait to be asked, and do not use this before final review has actually passed. Promotion is the last step, not a shortcut.
+description: Promote a completed feature once its final implementation review has passed. Generate its feature doc from implementation reality, delete the source seed and spec, and land it all atomically with the code. Use this automatically the moment a final-review gate passes for a feature. Do not wait to be asked, and do not use this before final review has passed. Promotion is the last step, not a shortcut.
 ---
 
 # SDLC promotion
@@ -11,7 +11,7 @@ something about it turns out wrong later.
 
 ## Preconditions
 
-Only run this after the final-review gate for the feature has actually
+Only run this after the final-review gate for the feature has
 passed. If asked to promote something that hasn't cleared final review,
 stop and say so.
 
@@ -19,7 +19,7 @@ stop and say so.
 
 1. **Write the feature doc** at `docs/features/<slug>.md`, using
    `templates/feature-doc-template.md`. Base every section on what was
-   actually implemented. Read the real code and behavior, not the spec's
+   implemented. Read the real code and behavior, not the spec's
    original intent. Where implementation deviated from the spec, the
    feature doc records the deviation as current reality without flagging
    or explaining it. The plan and git history hold that.

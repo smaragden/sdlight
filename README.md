@@ -65,10 +65,10 @@ you like, and sdlight only supplies the gate between steps.
 
 ## Human gates
 
-A human is asked at exactly these points, and nowhere else.
+sdlight asks a human at exactly these points, and nowhere else.
 
 - The spec's Open questions section is non-empty when planning starts.
-- Plan review returns HOLD: the plan's Risks section lists an assumption.
+- Plan review returns HOLD because the plan's Risks section lists an assumption.
 - Plan review returns GAPS three times for the same plan.
 - Step review returns FAIL three times for the same step.
 - Final review returns FAIL or HOLD.

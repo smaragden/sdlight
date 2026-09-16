@@ -1,6 +1,6 @@
 ---
 name: sdlc-final-review
-description: Review a completed implementation against its original spec in specs/, not against the plan. Use when every step of a plan has passed sdlc-step-review, or when the user asks for a final review of a feature. Runs in fresh context. A PASS here is what triggers sdlc-promote; a FAIL lists unmet acceptance criteria and goes to a human.
+description: Review a completed implementation against its original spec in specs/, not against the plan. Use when every step of a plan has passed sdlc-step-review, or when the user asks for a final review of a feature. Runs in fresh context. A PASS here is what triggers sdlc-promote. A FAIL lists unmet acceptance criteria and goes to a human.
 context: fork
 ---
 
@@ -19,8 +19,8 @@ criterion, then the evidence: a test you ran and its output, a command
 and its output, or a code path you traced with file and line. "Looks
 right" is not evidence.
 
-Then walk the Behavior section the same way. Then check Non-goals:
-confirm the implementation did not build any of them.
+Then walk the Behavior section the same way. Then check Non-goals.
+Confirm the implementation built none of them.
 
 ## Verdict
 

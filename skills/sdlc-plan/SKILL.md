@@ -1,6 +1,6 @@
 ---
 name: sdlc-plan
-description: Turn an approved spec in specs/ into an implementation plan in plans/. Use when the user asks to plan a spec, says "plan <feature>", or wants to start implementing something that has a spec but no plan yet. Do not use this for ideas without a spec (that's sdlc-brainstorm). Writing the plan always ends by handing it to sdlc-plan-review; never start executing a plan that hasn't passed that gate.
+description: Turn an approved spec in specs/ into an implementation plan in plans/. Use when the user asks to plan a spec, says "plan <feature>", or wants to start implementing something that has a spec but no plan yet. Do not use this for ideas without a spec (that's sdlc-brainstorm). Writing the plan always ends by handing it to sdlc-plan-review. Never start executing a plan that hasn't passed that gate.
 ---
 
 # SDLC plan: spec to plan
