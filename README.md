@@ -1,10 +1,9 @@
 # sdlight
 
 A lightweight SDLC for a solo developer: seed, spec, plan, feature doc.
-Standalone. It has no dependency on `superpowers` or any other plugin,
-and it deliberately carries less ceremony than a full methodology: fast
-idea capture, a short brainstorm-to-spec conversation, and an automatic
-doc lifecycle.
+Fast idea capture, a short brainstorm-to-spec conversation, review gates
+between plan and code, and a doc lifecycle that maintains itself. No
+other plugins required.
 
 Ships as both a Claude Code plugin and a Pi package, from the same
 `skills/` and `templates/` folders. Pi implements the same Agent Skills
