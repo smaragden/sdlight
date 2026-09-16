@@ -25,6 +25,11 @@ any spec's content.
    - Delete specs that are stale, meaning a shipped feature doc or another
      spec has superseded them.
 3. **Feature docs** (`docs/features/`)
+   - A feature doc describes the code as it is. Where a newer feature
+     doc or the code itself contradicts a statement in an older doc,
+     correct that statement in place. Do this without asking. Change
+     only the contradicted sentence, not the doc's structure or scope,
+     and name every such edit in the summary with the doc and the fact.
    - Where several feature docs overlap enough that one subsystem doc
      would describe them better, propose the merge to the user. If
      confirmed, write the merged doc and delete the old ones outright. No
@@ -42,7 +47,7 @@ any spec's content.
 - Does not touch plans or in-progress implementation.
 - Does not merge specs or feature docs without user confirmation. Seeds
   are low-stakes enough to auto-merge and delete. Specs and feature docs
-  are not.
+  are not. Correcting a false sentence in a feature doc is not a merge.
 - Does not invent history. If something's ambiguous, ask rather than
   guess.
 

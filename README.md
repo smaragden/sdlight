@@ -53,7 +53,7 @@ In pipeline order.
 |---|---|---|
 | `seed-capture` | On any quick or rough idea | Writes `seeds/<slug>.md`, nothing more |
 | `sdlc-brainstorm` | On "let's brainstorm X" or working a seed | Converges a seed into `specs/<slug>.md`, forks tangents into new seeds |
-| `sdlc-refine` | Automatically after every brainstorm and every promotion | Dedupes and prunes seeds and specs, regenerates `PROJECT.md` |
+| `sdlc-refine` | Automatically after every brainstorm and every promotion | Dedupes and prunes seeds and specs, corrects feature docs the code contradicts, regenerates `PROJECT.md` |
 | `sdlc-plan` | On "plan <feature>" for a spec | Writes `plans/<slug>.md`, hands off to plan review |
 | `sdlc-plan-review` | Automatically after sdlc-plan | Checks plan coverage against the spec in fresh context. PASS, GAPS, or HOLD |
 | `sdlc-step-review` | After each executed plan step | Checks the diff against that one step. PASS or FAIL |
