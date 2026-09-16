@@ -12,6 +12,10 @@ the code is. The plan is not the standard. The spec is. A feature can
 follow its plan perfectly and still miss the spec, and that's what this
 gate exists to catch.
 
+Also read the `phase` line from the frontmatter of
+`docs/sdlight/PROJECT.md`, and nothing else from that file. Missing file
+or missing line means `pre-release`.
+
 ## Checks
 
 Walk the spec's Acceptance criteria one at a time. For each, write the
@@ -21,6 +25,12 @@ right" is not evidence.
 
 Then walk the Behavior section the same way. Then check Non-goals.
 Confirm the implementation built none of them.
+
+Then apply the phase. In pre-release, breaking behavior that existed
+before this feature is never a finding. Do not list it, do not HOLD on
+it. In `released`, a change to behavior an existing feature doc
+describes, which the spec's Behavior section did not sanction, is a
+FAIL line naming the feature doc.
 
 Scratch scripts you write to gather evidence go under the repo's
 ignored paths or get deleted before the verdict. Leave nothing behind

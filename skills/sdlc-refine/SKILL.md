@@ -40,6 +40,10 @@ task, and not an excuse to re-litigate any spec's content.
    - Anchor on the previous version for structure and phrasing. Unchanged
      facts stay worded the same, so diffs show only what
      changed. This is not a blank-page rewrite each time.
+   - Copy the `phase` frontmatter line from the previous version
+     unchanged. It is the one hand-set field in the file, and a human
+     moves it from `pre-release` to `released`. When there is no
+     previous version, write `pre-release`. Never change it yourself.
 
 ## What this pass does not do
 

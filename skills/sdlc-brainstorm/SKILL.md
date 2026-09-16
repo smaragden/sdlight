@@ -49,6 +49,14 @@ are tangled together.
   will check against. Be concrete there, even if Intent and Scope stay
   brief.
 - Don't describe implementation approach. That's the plan's job.
+- Check the project's phase, the `phase` line in the frontmatter of
+  `docs/sdlight/PROJECT.md`. Missing file or missing line means
+  `pre-release`. In pre-release, breaking existing behavior is free:
+  don't ask about backward compatibility, and don't write migration,
+  aliases, or deprecation into the spec. Describe the new behavior as
+  the behavior. In `released`, a spec that changes behavior a feature
+  doc documents must say so under Behavior, and say what happens to
+  existing users of the old behavior.
 
 ## Ending the session
 

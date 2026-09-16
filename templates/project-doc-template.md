@@ -1,6 +1,7 @@
 ---
 generated: <date, filled in by the refinement agent each run>
-source: derived from docs/sdlight/features/*.md. Do not hand-edit.
+phase: pre-release
+source: derived from docs/sdlight/features/*.md. Only phase is hand-set.
 ---
 
 # Project: <project name>
@@ -24,7 +25,9 @@ stage). Pointer only. The spec or plan has the detail.
 
 ---
 Regeneration note for the refinement agent (delete this block in output):
-Keep structure and phrasing stable where underlying facts haven't
-changed. This doc is regenerated from scratch each run, anchored on its
-own previous version for style and structure continuity. Minimize
-unnecessary diff.
+Copy `phase` from the previous version unchanged. It is `pre-release`
+or `released`, a human sets it, and it defaults to `pre-release` when
+there is no previous version. Keep structure and phrasing stable where
+underlying facts haven't changed. This doc is regenerated from scratch
+each run, anchored on its own previous version for style and structure
+continuity. Minimize unnecessary diff.
