@@ -26,9 +26,11 @@ created: <date>
 
 3. Commit the file on its own, message `Seed: <slug>`.
 4. Confirm in one short line ("Seeded as `seeds/<slug>.md`.") and stop.
-   Do not brainstorm it, do not ask clarifying questions, do not expand
-   it into a spec. If the user wants that, they'll ask for a brainstorm
-   session (sdlc-brainstorm) separately, possibly much later.
+   That line is the whole reply. No "say brainstorm X when ready", no
+   next-step hint. Do not brainstorm it, do not ask clarifying questions,
+   do not expand it into a spec. If the user wants that, they'll ask for
+   a brainstorm session (sdlc-brainstorm) separately, possibly much
+   later.
 
 ## Slugging
 

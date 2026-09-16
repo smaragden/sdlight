@@ -22,6 +22,10 @@ right" is not evidence.
 Then walk the Behavior section the same way. Then check Non-goals.
 Confirm the implementation built none of them.
 
+Scratch scripts you write to gather evidence go under the repo's
+ignored paths or get deleted before the verdict. Leave nothing behind
+in `/tmp` or the working tree.
+
 ## Verdict
 
 - `PASS` when every criterion and behavior has evidence and no non-goal
