@@ -1,25 +1,27 @@
 # AGENTS.md
 
-## This is the sdlight source repo, not a project that uses sdlight
+## This is the sdlight source repo — check which job you're doing
 
-You are developing **sdlight itself** — a Claude Code / Pi plugin that
-provides a lightweight SDLC workflow (seed → spec → plan → feature doc,
-with review gates). This repo is the plugin's source, not a consumer of
-it.
+This repo is unusual: it's the source of **sdlight itself** (a Claude
+Code / Pi plugin providing a lightweight SDLC workflow: seed → spec →
+plan → feature doc, with review gates), *and* the sdlight skills may be
+loaded in your session because it installs itself as a local plugin.
 
-Concretely, that means:
+So before acting on anything that looks like an sdlight trigger, work out
+which of two jobs the user actually wants:
 
-- **Do not run the sdlight workflow on this repo.** There is no
-  `docs/sdlight/` vault here and there shouldn't be. Don't create seeds,
-  specs, or plans under `docs/sdlight/`. The paths the skills describe
-  (`docs/sdlight/seeds/`, `docs/sdlight/specs/`, ...) refer to the
-  *target* project that installs sdlight — not to this one.
-- **When a skill file mentions those paths, you're reading product
-  behavior, not instructions for this repo.** Editing `skills/*/SKILL.md`
-  here changes what the plugin tells *other* projects to do.
-- The sdlight skills may be loaded in your session (this repo installs
-  itself as a local plugin). Treat their triggers as descriptions of the
-  feature you're building, not as commands to follow here.
+- **Working *on* the workflow** — changing the plugin: editing
+  `skills/*/SKILL.md`, templates, the extension, or manifests. This is
+  the default here. When a skill file mentions `docs/sdlight/seeds/`,
+  `docs/sdlight/specs/`, etc., you're reading *product behavior* you
+  might edit, not instructions to follow.
+- **Using the workflow** — actually running seed/spec/plan on this repo
+  to develop it (dogfooding). This is legitimate but rarer, and it means
+  creating a real `docs/sdlight/` vault here.
+
+If it's ambiguous, ask. The common mistake is treating a skill's trigger
+as a command to run when the user meant to work on that skill's
+definition. When in doubt, assume they're working *on* the plugin.
 
 ## What development here actually looks like
 
@@ -34,6 +36,8 @@ Concretely, that means:
 
 ## Quick orientation check
 
-If you're about to create a file under `docs/sdlight/` in *this* repo,
-stop — you've mistaken the source repo for a consumer. You almost
-certainly meant to edit a skill under `skills/` instead.
+About to create a file under `docs/sdlight/` in *this* repo? Pause and
+confirm intent. If the user asked you to change how the plugin behaves,
+you meant to edit a skill under `skills/` instead. Only create a
+`docs/sdlight/` vault if they've clearly asked to dogfood the workflow
+on sdlight itself.
