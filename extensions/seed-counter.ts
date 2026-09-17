@@ -238,7 +238,11 @@ export default function (pi: ExtensionAPI) {
       }
       const picked = await openSeedPicker(ctx, seeds);
       if (!picked) return;
-      // Step 5 takes the picked seed to brainstorming here.
+      // Take the chosen seed to brainstorming via an explicit skill
+      // invocation, naming the seed by its path/slug.
+      pi.sendUserMessage(`/skill:sdlc-brainstorm ${picked.path}`, {
+        expandPromptTemplates: true,
+      });
     },
   });
 }
