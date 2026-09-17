@@ -1,0 +1,105 @@
+import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+
+const execFileAsync = promisify(execFile);
+
+const SEEDS_DIR = "docs/sdlight/seeds";
+const STATUS_KEY = "sdlight-seeds";
+
+type SeedStatus =
+  | { kind: "not-a-repo" }
+  | { kind: "no-seeds-dir" }
+  | { kind: "ok"; files: string[] };
+
+/**
+ * Return the seed files under docs/sdlight/seeds/ that have uncommitted
+ * changes in the working tree (new/untracked, staged, or modified). These
+ * are the seeds seed-capture wrote but that no workflow step has committed
+ * yet. Deletions are not counted as "uncommitted seeds".
+ */
+async function getUncommittedSeeds(cwd: string): Promise<SeedStatus> {
+  // Confirm we're inside a git work tree first.
+  try {
+    await execFileAsync("git", ["rev-parse", "--is-inside-work-tree"], { cwd });
+  } catch {
+    return { kind: "not-a-repo" };
+  }
+
+  const { stdout } = await execFileAsync(
+    "git",
+    ["status", "--porcelain=v1", "--untracked-files=all", "--", SEEDS_DIR],
+    { cwd, maxBuffer: 10 * 1024 * 1024 },
+  );
+
+  const files = new Set<string>();
+  for (const line of stdout.split("\n")) {
+    if (!line.trim()) continue;
+    // Format: "XY <path>" where XY is a two-char status code.
+    const index = line[0];
+    const worktree = line[1];
+    let path = line.slice(3).trim();
+    // Renames render as "old -> new"; keep the new path.
+    const arrow = path.indexOf(" -> ");
+    if (arrow !== -1) path = path.slice(arrow + 4);
+    // Strip surrounding quotes git adds for paths with special chars.
+    if (path.startsWith('"') && path.endsWith('"')) path = path.slice(1, -1);
+    if (!path.endsWith(".md")) continue;
+    // Skip pure deletions — the seed is gone, not pending.
+    if (index === "D" || worktree === "D") continue;
+    files.add(path);
+  }
+
+  return { kind: "ok", files: [...files].sort() };
+}
+
+function statusText(status: SeedStatus): string | undefined {
+  if (status.kind !== "ok") return undefined;
+  const n = status.files.length;
+  if (n === 0) return "🌱 seeds: clean";
+  return `🌱 seeds: ${n} uncommitted`;
+}
+
+async function refresh(ctx: ExtensionContext): Promise<SeedStatus> {
+  const status = await getUncommittedSeeds(ctx.cwd);
+  const text = statusText(status);
+  if (text) ctx.ui.setStatus(STATUS_KEY, text);
+  else ctx.ui.setStatus(STATUS_KEY, ""); // clear when not applicable
+  return status;
+}
+
+export default function (pi: ExtensionAPI) {
+  // Show the count as soon as a session starts...
+  pi.on("session_start", async (_event, ctx) => {
+    await refresh(ctx);
+  });
+
+  // ...and keep it current after each turn, since the agent (or a skill)
+  // may have just written a new seed file.
+  pi.on("turn_end", async (_event, ctx) => {
+    await refresh(ctx);
+  });
+
+  // On-demand detail: names of the uncommitted seeds.
+  pi.registerCommand("seeds", {
+    description: "Show uncommitted seeds in this repo (docs/sdlight/seeds/)",
+    handler: async (_args, ctx) => {
+      const status = await refresh(ctx);
+      if (status.kind === "not-a-repo") {
+        ctx.ui.notify("Not a git repository — can't count seeds.", "warn");
+        return;
+      }
+      if (status.kind === "no-seeds-dir" || status.files.length === 0) {
+        ctx.ui.notify("No uncommitted seeds. 🌱", "info");
+        return;
+      }
+      const list = status.files
+        .map((f) => `  • ${f.replace(`${SEEDS_DIR}/`, "")}`)
+        .join("\n");
+      ctx.ui.notify(
+        `${status.files.length} uncommitted seed(s):\n${list}`,
+        "info",
+      );
+    },
+  });
+}

@@ -8,6 +8,9 @@
   "pi": {
     "skills": [
       "./skills"
+    ],
+    "extensions": [
+      "./extensions/seed-counter.ts"
     ]
   }
 }
