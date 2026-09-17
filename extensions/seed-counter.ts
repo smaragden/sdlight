@@ -1,11 +1,54 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { execFile } from "node:child_process";
+import { readdir, readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
 const SEEDS_DIR = "docs/sdlight/seeds";
 const STATUS_KEY = "sdlight-seeds";
+
+export interface Seed {
+  /** Filename without .md — used as the seed's title. */
+  slug: string;
+  /** Repo-relative path, e.g. docs/sdlight/seeds/foo.md. */
+  path: string;
+  /** Content beneath the frontmatter block. */
+  body: string;
+}
+
+/** Strip a leading YAML frontmatter block (--- ... ---) and return the rest. */
+function stripFrontmatter(content: string): string {
+  const match = content.match(/^---\n[\s\S]*?\n---\n?/);
+  return (match ? content.slice(match[0].length) : content).trim();
+}
+
+/**
+ * List every seed under docs/sdlight/seeds/ as { slug, path, body },
+ * sorted by slug. Returns [] when the directory is missing.
+ */
+async function listSeeds(cwd: string): Promise<Seed[]> {
+  let names: string[];
+  try {
+    names = await readdir(join(cwd, SEEDS_DIR));
+  } catch {
+    return [];
+  }
+
+  const seeds: Seed[] = [];
+  for (const name of names) {
+    if (!name.endsWith(".md")) continue;
+    const relPath = `${SEEDS_DIR}/${name}`;
+    const content = await readFile(join(cwd, relPath), "utf8");
+    seeds.push({
+      slug: name.slice(0, -".md".length),
+      path: relPath,
+      body: stripFrontmatter(content),
+    });
+  }
+  return seeds.sort((a, b) => a.slug.localeCompare(b.slug));
+}
 
 type SeedStatus =
   | { kind: "not-a-repo" }
