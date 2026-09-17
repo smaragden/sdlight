@@ -1,6 +1,6 @@
 {
   "name": "sdlight",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lightweight SDLC for a solo developer. Seed, spec, plan, feature doc.",
   "license": "MIT",
   "author": "Diddi",
@@ -8,6 +8,9 @@
   "pi": {
     "skills": [
       "./skills"
+    ],
+    "extensions": [
+      "./extensions/seed-counter.ts"
     ]
   }
 }
