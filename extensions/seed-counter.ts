@@ -145,4 +145,21 @@ export default function (pi: ExtensionAPI) {
       );
     },
   });
+
+  // Browse the seed vault in a popup and take one to brainstorming.
+  pi.registerCommand("browse-seeds", {
+    description: "Browse seeds and take one to brainstorming",
+    handler: async (_args, ctx) => {
+      if (ctx.mode !== "tui") {
+        ctx.ui.notify("Browsing seeds needs the interactive TUI.", "info");
+        return;
+      }
+      const seeds = await listSeeds(ctx.cwd);
+      if (seeds.length === 0) {
+        ctx.ui.notify("No seeds to browse.", "info");
+        return;
+      }
+      // Step 3 opens the picker overlay here.
+    },
+  });
 }
