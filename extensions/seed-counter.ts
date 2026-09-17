@@ -1,4 +1,6 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+import { DynamicBorder } from "@earendil-works/pi-coding-agent";
+import { Container, type SelectItem, SelectList, Text } from "@earendil-works/pi-tui";
 import { execFile } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -48,6 +50,70 @@ async function listSeeds(cwd: string): Promise<Seed[]> {
     });
   }
   return seeds.sort((a, b) => a.slug.localeCompare(b.slug));
+}
+
+/**
+ * Open a popup that lists seeds by slug with a live preview of the
+ * selected seed's body. Returns the chosen seed on Enter, or null on Esc.
+ */
+async function openSeedPicker(
+  ctx: ExtensionContext,
+  seeds: Seed[],
+): Promise<Seed | null> {
+  const bySlug = new Map(seeds.map((s) => [s.slug, s]));
+  const items: SelectItem[] = seeds.map((s) => ({ value: s.slug, label: s.slug }));
+
+  return ctx.ui.custom<Seed | null>((tui, theme, _kb, done) => {
+    const container = new Container();
+    container.addChild(new DynamicBorder((s: string) => theme.fg("accent", s)));
+    container.addChild(
+      new Text(theme.fg("accent", theme.bold("Browse seeds")), 1, 0),
+    );
+
+    const listTheme = {
+      selectedPrefix: (t: string) => theme.fg("accent", t),
+      selectedText: (t: string) => theme.fg("accent", t),
+      description: (t: string) => theme.fg("muted", t),
+      scrollInfo: (t: string) => theme.fg("dim", t),
+      noMatch: (t: string) => theme.fg("warning", t),
+    };
+    const list = new SelectList(items, Math.min(items.length, 10), listTheme);
+
+    const preview = new Text("", 1, 1);
+    const showPreview = (item: SelectItem | null) => {
+      const seed = item ? bySlug.get(item.value) : undefined;
+      preview.setText(seed ? seed.body : "");
+    };
+
+    list.onSelectionChange = (item) => {
+      showPreview(item);
+      tui.requestRender();
+    };
+    list.onSelect = (item) => done(bySlug.get(item.value) ?? null);
+    list.onCancel = () => done(null);
+
+    container.addChild(list);
+    container.addChild(
+      new Text(
+        theme.fg("dim", "up/down navigate • enter brainstorm • esc cancel"),
+        1,
+        0,
+      ),
+    );
+    container.addChild(preview);
+    container.addChild(new DynamicBorder((s: string) => theme.fg("accent", s)));
+
+    showPreview(list.getSelectedItem());
+
+    return {
+      render: (w: number) => container.render(w),
+      invalidate: () => container.invalidate(),
+      handleInput: (data: string) => {
+        list.handleInput(data);
+        tui.requestRender();
+      },
+    };
+  }, { overlay: true });
 }
 
 type SeedStatus =
@@ -159,7 +225,9 @@ export default function (pi: ExtensionAPI) {
         ctx.ui.notify("No seeds to browse.", "info");
         return;
       }
-      // Step 3 opens the picker overlay here.
+      const picked = await openSeedPicker(ctx, seeds);
+      if (!picked) return;
+      // Step 5 takes the picked seed to brainstorming here.
     },
   });
 }
