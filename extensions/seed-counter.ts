@@ -95,7 +95,7 @@ async function openSeedPicker(
     container.addChild(list);
     container.addChild(
       new Text(
-        theme.fg("dim", "up/down navigate • enter brainstorm • esc cancel"),
+        theme.fg("dim", "up/down navigate • r random • enter brainstorm • esc cancel"),
         1,
         0,
       ),
@@ -109,6 +109,17 @@ async function openSeedPicker(
       render: (w: number) => container.render(w),
       invalidate: () => container.invalidate(),
       handleInput: (data: string) => {
+        if (data === "r") {
+          // Randomize: jump the selection to a uniformly random seed and
+          // refresh the preview. setSelectedIndex does not fire
+          // onSelectionChange, so update the preview here. This never
+          // selects or cancels, so no brainstorm starts.
+          const idx = Math.floor(Math.random() * items.length);
+          list.setSelectedIndex(idx);
+          showPreview(list.getSelectedItem());
+          tui.requestRender();
+          return;
+        }
         list.handleInput(data);
         tui.requestRender();
       },
