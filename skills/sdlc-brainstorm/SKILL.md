@@ -14,8 +14,9 @@ are the edges? Push back if the idea is vague or if two different ideas
 are tangled together.
 
 Explore before you converge. The fastest way to a weak spec is
-committing to the first route that works. Put real alternatives on the
-table first, then choose.
+committing to the first route that works. When an idea has room to sway,
+put real alternatives on the table first, then choose. When it doesn't,
+don't manufacture them.
 
 ## Flow
 
@@ -25,13 +26,17 @@ table first, then choose.
 2. **Converse until the essence is clear.** Don't rush to a spec. If the
    idea is already sharp, this can be short. If it's vague, keep asking
    until it isn't.
-3. **Explore routes before converging.** Before committing to a single
-   direction, lay out two or three genuinely distinct approaches, each
-   with what it optimizes for and its tradeoffs or risks. This is the
-   experimentation phase: generate possibilities, don't prune to the
-   first one that works. Converge with the user on one route. If the
-   idea honestly has only one sensible route, say so plainly rather
-   than inventing weak alternatives to pad the list.
+3. **Gauge the latitude, then explore routes.** First read how much
+   room the idea has to sway. Some ideas are wide open and want several
+   routes on the table; others are a straightforward implementation
+   with one sensible path. Scale the exploration to fit. Where there's
+   latitude, lay out two or three genuinely distinct approaches, each
+   with what it optimizes for and its tradeoffs or risks, then converge
+   with the user on one. This is the experimentation phase: generate
+   possibilities, don't prune to the first one that works. Where
+   there's honestly one sensible path, name it plainly and move to the
+   spec. Don't manufacture alternatives to hit a quota. This is a
+   brainstorm-time read, not a label carried on the seed.
 4. **Watch for out-of-scope tangents as they come up.** The moment
    something surfaces that isn't core to this feature, whether a related
    but separate idea or a "we should also...", say so and capture it as a
