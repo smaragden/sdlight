@@ -11,9 +11,21 @@ source_seeds: [<seed-file-1>, <seed-file-2>]
 ## Scope
 What this feature covers. Be concrete about boundaries.
 
+## Roads not taken
+The distinct routes weighed during brainstorming and why this one won,
+one line each. If the idea honestly had one sensible route, say so. This
+is background for a later reader, not something a review gate checks.
+
 ## Behavior
 The essential behavior the implementation must produce. Inputs, outputs,
 states, observable effects. This is what a plan gets checked against.
+
+## Constraints
+Self-imposed rules this feature must obey: the palette we work within
+(no new dependencies, one file only, no network calls, and so on).
+Deliberate limits chosen to sharpen the work, not incidental facts. The
+plan and the implementation are checked against these, like acceptance
+criteria. "None" is a valid answer and means the work is unconstrained.
 
 ## Non-goals
 What this does not do. Anything that came up during

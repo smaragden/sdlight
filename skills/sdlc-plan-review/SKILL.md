@@ -30,11 +30,14 @@ file. Missing file or missing line means `pre-release`. Nothing else.
    step whose only purpose is keeping old behavior working (a shim, an
    alias, a deprecation notice, a migration) is extra work unless the
    spec asks for it.
-5. **Risks.** Read the plan's Risks section. Each assumption there is a
+5. **Constraints.** Read the spec's Constraints section. No plan step
+   may violate a listed constraint. A step that does is a gap. If
+   Constraints reads "None", skip this check.
+6. **Risks.** Read the plan's Risks section. Each assumption there is a
    human question. Do not answer it yourself. In pre-release, an
    assumption about backward compatibility is not a question. Drop it
    from the HOLD list.
-6. **Phase.** Skip this check in pre-release. In `released`, a step that
+7. **Phase.** Skip this check in pre-release. In `released`, a step that
    changes behavior an existing feature doc describes, where the spec's
    Behavior section says nothing about that change, is a gap. Name the
    feature doc.
@@ -43,10 +46,10 @@ file. Missing file or missing line means `pre-release`. Nothing else.
 
 Write one of these, and nothing else after it.
 
-- `PASS` when checks 1 to 4 and 6 find nothing and Risks is empty.
+- `PASS` when checks 1 to 5 and 7 find nothing and Risks is empty.
   Decisions may hold anything. Those are answered, not open.
 - `HOLD` followed by the assumptions from Risks, one per line, when
-  checks 1 to 4 and 6 find nothing but Risks lists something. A human
+  checks 1 to 5 and 7 find nothing but Risks lists something. A human
   answers these before execution starts.
 - `GAPS` followed by one line per gap, each naming the check number,
   the spec line, and what's missing. This goes back to sdlc-plan for a

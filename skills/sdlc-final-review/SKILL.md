@@ -23,8 +23,11 @@ criterion, then the evidence: a test you ran and its output, a command
 and its output, or a code path you traced with file and line. "Looks
 right" is not evidence.
 
-Then walk the Behavior section the same way. Then check Non-goals.
-Confirm the implementation built none of them.
+Then walk the Behavior section the same way. Then check the spec's
+Constraints: confirm the implementation obeys each, with evidence; a
+violation is a FAIL line. If Constraints reads "None", there's nothing
+to check. Then check Non-goals. Confirm the implementation built none of
+them.
 
 Then apply the phase. In pre-release, breaking behavior that existed
 before this feature is never a finding. Do not list it, do not HOLD on

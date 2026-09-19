@@ -1,6 +1,6 @@
 {
   "name": "sdlight",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Lightweight SDLC for a solo developer. Seed, spec, plan, feature doc.",
   "license": "MIT",
   "author": "Diddi",
