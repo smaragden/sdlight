@@ -1,6 +1,12 @@
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { DynamicBorder } from "@earendil-works/pi-coding-agent";
-import { Container, type SelectItem, SelectList, Text } from "@earendil-works/pi-tui";
+import {
+  Container,
+  type SelectItem,
+  SelectList,
+  Text,
+  wrapTextWithAnsi,
+} from "@earendil-works/pi-tui";
 import { execFile } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -10,6 +16,9 @@ const execFileAsync = promisify(execFile);
 
 const SEEDS_DIR = "docs/sdlight/seeds";
 const STATUS_KEY = "sdlight-seeds";
+// Content lines the seed preview always occupies. Fixed so the popup
+// keeps a constant height as you move between seeds of different lengths.
+const PREVIEW_LINES = 10;
 
 export interface Seed {
   /** Filename without .md — used as the seed's title. */
@@ -53,6 +62,49 @@ async function listSeeds(cwd: string): Promise<Seed[]> {
 }
 
 /**
+ * A preview pane that always renders the same number of content lines,
+ * so the popup doesn't resize as the selection moves between seeds of
+ * different lengths. Long bodies wrap and truncate with an ellipsis;
+ * short ones pad out with blank lines.
+ */
+class FixedHeightPreview {
+  private text = "";
+
+  constructor(
+    private readonly lines: number,
+    private readonly dim: (s: string) => string,
+    private readonly padX = 1,
+    private readonly padY = 1,
+  ) {}
+
+  setText(text: string): void {
+    this.text = text;
+  }
+
+  invalidate(): void {}
+
+  render(width: number): string[] {
+    const innerWidth = Math.max(1, width - this.padX * 2);
+    const wrapped = this.text ? wrapTextWithAnsi(this.text, innerWidth) : [];
+    const truncated = wrapped.length > this.lines;
+    const shown = truncated ? wrapped.slice(0, this.lines - 1) : wrapped;
+
+    const body = [...shown];
+    if (truncated) body.push(this.dim("\u2026"));
+    while (body.length < this.lines) body.push("");
+
+    const pad = " ".repeat(this.padX);
+    const blank = "";
+    const content = body.map((line) => (line ? pad + line : blank));
+    return [
+      ...Array<string>(this.padY).fill(blank),
+      ...content,
+      ...Array<string>(this.padY).fill(blank),
+    ];
+  }
+}
+
+/**
  * Open a popup that lists seeds by slug with a live preview of the
  * selected seed's body. Returns the chosen seed on Enter, or null on Esc.
  */
@@ -79,7 +131,10 @@ async function openSeedPicker(
     };
     const list = new SelectList(items, Math.min(items.length, 10), listTheme);
 
-    const preview = new Text("", 1, 1);
+    const preview = new FixedHeightPreview(
+      PREVIEW_LINES,
+      (t: string) => theme.fg("dim", t),
+    );
     const showPreview = (item: SelectItem | null) => {
       const seed = item ? bySlug.get(item.value) : undefined;
       preview.setText(seed ? seed.body : "");
