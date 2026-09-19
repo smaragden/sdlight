@@ -83,6 +83,11 @@ don't manufacture them.
 
 ## Ending the session
 
-Confirm the spec's path, name anything that got forked into new seeds,
-and stop. Don't start planning implementation in the same breath. That's
-a separate, deliberate step.
+Confirm the spec's path and name anything that got forked into new
+seeds. Then name the next step plainly: when they're ready, plan the
+spec with sdlc-plan. State it as a one-line handoff, for example "Next:
+plan it with sdlc-plan when you're ready."
+
+Naming the next step is not the same as taking it. Don't start planning
+in the same breath and don't run sdlc-plan yourself. Planning is a
+separate, deliberate step the user triggers.
