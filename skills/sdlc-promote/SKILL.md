@@ -28,9 +28,11 @@ stop and say so.
    still exists. The brainstorm session usually deletes it on promotion
    to spec. Skip this step in that case.
 4. **Commit on the feature branch.** The feature doc write and the two
-   deletions go in one commit, message `Promote: <slug>`, as the last
-   commit on the branch before it merges. Never on main after the merge,
-   and never in a later PR. Leave the plan document alone. It stays as
+   deletions go in one commit as the last commit on the branch before it
+   merges. This commit lands the feature code too, so write a
+   conventional-commit message whose type reflects the actual change
+   (`feat`, `fix`, and so on) and whose subject names the feature — not
+   `docs`. Never on main after the merge, and never in a later PR. Leave the plan document alone. It stays as
    the historical record of how the feature was built.
 5. **Run sdlc-refine** so the project doc stops listing this feature as
    an open thread and starts listing it in the feature map.

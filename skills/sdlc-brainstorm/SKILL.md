@@ -59,7 +59,7 @@ don't manufacture them.
 8. **Delete the seed this spec came from**, if there was one. The spec
    now supersedes it. Leave unrelated seeds alone.
 9. **Commit** the spec, the seed deletion, and any seeds forked during
-   the session, in one commit, message `Spec: <slug>`. A spec that
+   the session, in one commit, message `docs(sdlight): spec <slug>`. A spec that
    isn't committed isn't in history, and promotion deletes it later.
 10. **Run sdlc-refine.**
 

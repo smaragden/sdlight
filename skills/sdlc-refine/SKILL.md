@@ -81,8 +81,8 @@ task, and not an excuse to re-litigate any spec's content.
 ## Commit
 
 Commit everything this pass changed in one commit, message
-`Refine: <one line saying what changed>`. If nothing changed, there is
-no commit.
+`docs(sdlight): refine <one line saying what changed>`. If nothing
+changed, there is no commit.
 
 ## Output
 
