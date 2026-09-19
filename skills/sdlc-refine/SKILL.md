@@ -1,6 +1,6 @@
 ---
 name: sdlc-refine
-description: Run the refinement pass across the whole seed vault and spec set. Find duplicate ideas, surface correlations, clean up outdated seeds and specs, and regenerate the project doc. Trigger this automatically at the end of every sdlc-brainstorm session, after every sdlc-promote, and whenever the user explicitly asks to "refine", "clean up the seeds", "tidy the vault", or "update the project doc". Keep this pass narrow and mechanical. It is a maintenance step, not a brainstorm, and it should not invent new feature ideas or rewrite specs' substance.
+description: Run the refinement pass across the whole seed vault and spec set. Find duplicate ideas, surface correlations, clean up outdated seeds and specs, regenerate the seed map, and regenerate the project doc. Trigger this automatically at the end of every sdlc-brainstorm session, after every sdlc-promote, and whenever the user explicitly asks to "refine", "clean up the seeds", "tidy the vault", or "update the project doc". Keep this pass narrow and mechanical. It is a maintenance step, not a brainstorm, and it should not invent new feature ideas or rewrite specs' substance.
 ---
 
 # SDLC refinement pass
@@ -18,6 +18,8 @@ task, and not an excuse to re-litigate any spec's content.
    - Seeds that correlate (related, but not duplicates) both stay. Record
      the relationship in each seed's frontmatter as
      `related: [<other-seed-slug>]`.
+   - Regenerate the seed map at `docs/sdlight/SEEDS.md` from the current
+     seed set, after all merges and deletions. See "Seed map" below.
 2. **Specs**
    - Flag specs that overlap or duplicate for the user rather than
      auto-merging. Specs represent committed direction, and merging them
@@ -34,7 +36,28 @@ task, and not an excuse to re-litigate any spec's content.
      would describe them better, propose the merge to the user. If
      confirmed, write the merged doc and delete the old ones outright. No
      stubs, no `superseded-by` markers. Git history is the record.
-4. **Project doc** (`docs/sdlight/PROJECT.md` or equivalent)
+4. **Seed map** (`docs/sdlight/SEEDS.md`)
+   - A single Mermaid graph of the current seeds, seeds only. Every seed
+     in `docs/sdlight/seeds/` is a node, identified by its slug, so
+     isolated seeds still appear. Draw one edge per `related:` pair.
+     `related:` is reciprocal, so treat edges as undirected and emit each
+     pair once (order the two endpoints alphabetically, e.g.
+     `auth-tokens --- session-store`).
+   - Shape (a `# Seed map` heading, then a fenced `mermaid` block):
+     ````
+     # Seed map
+
+     ```mermaid
+     graph LR
+       <one line per node, then one line per edge>
+     ```
+     ````
+   - Sort nodes alphabetically by slug, then edges alphabetically, so the
+     output is deterministic and diffs show only real changes. Anchor on
+     the previous version's wording where nothing changed.
+   - When there are no seeds, delete `docs/sdlight/SEEDS.md` if it exists;
+     don't write an empty graph.
+5. **Project doc** (`docs/sdlight/PROJECT.md` or equivalent)
    - Regenerate from the current `docs/sdlight/features/*.md` set, using
      `docs/sdlight/templates/project-doc-template.md`.
    - Anchor on the previous version for structure and phrasing. Unchanged
@@ -64,5 +87,5 @@ no commit.
 ## Output
 
 End with a short, concrete summary: what got merged, what got deleted,
-what got flagged for the user's judgment, and confirmation the project
-doc was regenerated. If nothing changed, say so in one line.
+what got flagged for the user's judgment, and confirmation the seed map
+and project doc were regenerated. If nothing changed, say so in one line.
