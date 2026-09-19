@@ -3,7 +3,7 @@
 **A lightweight SDLC for one person and a coding agent.** Ideas go in as
 half-formed sparks. Features come out with documentation that wrote
 itself. The bureaucracy cleans up after itself, so you can stay in the
-part you actually like — solving the problem.
+part you actually like: solving the problem.
 
 No extra plugins. Runs on Claude Code and Pi from the same `skills/`.
 
@@ -33,12 +33,12 @@ flowchart LR
     classDef human fill:#f3f4f6,stroke:#6b7280,color:#111827
 ```
 
-It starts as a shower thought. You drop it — half a sentence — and keep
-moving; **seed-capture** files it and gets out of your way. No triage, no
+It starts as a shower thought. You drop it, half a sentence, and keep
+moving. **seed-capture** files it and gets out of your way. No triage, no
 "is this in scope," no ceremony.
 
 Later, when you want to build it, **sdlc-brainstorm** turns the seed over
-with you in a real conversation — weighing two or three genuine routes
+with you in a real conversation. It weighs two or three genuine routes
 before committing one to a spec. Tangents don't derail the session; they
 get seeded and set aside for another day.
 
@@ -47,7 +47,7 @@ its keep: **nothing reaches your code without passing a gate.** A
 fresh-eyed reviewer checks the plan against the spec before a line is
 written. You build it one step at a time, and each step is checked
 against the plan it came from. When the last step lands, a final review
-holds the whole thing up against the *spec* — not the plan — to catch
+holds the whole thing up against the *spec*, not the plan, to catch
 drift between what you meant and what you made.
 
 Pass, and **sdlc-promote** does the satisfying part:
@@ -76,9 +76,9 @@ the seed and the spec.** The scaffolding dissolves. What remains is the
 code and one honest document describing it.
 
 Meanwhile **sdlc-refine** quietly gardens the whole vault after every
-brainstorm and every promotion — merging duplicate seeds, mapping how
-your ideas relate, correcting feature docs the code has outgrown, and
-regenerating the project overview. You never file paperwork. It files
+brainstorm and every promotion. It merges duplicate seeds, maps how
+your ideas relate, corrects feature docs the code has outgrown, and
+regenerates the project overview. You never file paperwork. It files
 itself.
 
 ## The skills
@@ -91,8 +91,8 @@ In pipeline order.
 | `sdlc-brainstorm` | Converges a seed into a spec; forks tangents into new seeds |
 | `sdlc-refine` | Dedupes seeds, maps relations, corrects feature docs, regenerates the overview |
 | `sdlc-plan` | Turns a spec into a plan, then hands it to review |
-| `sdlc-plan-review` | Checks the plan against the spec in fresh context — PASS, GAPS, or HOLD |
-| `sdlc-step-review` | Checks one step's diff against that step — PASS or FAIL |
+| `sdlc-plan-review` | Checks the plan against the spec in fresh context: PASS, GAPS, or HOLD |
+| `sdlc-step-review` | Checks one step's diff against that step: PASS or FAIL |
 | `sdlc-final-review` | Checks the implementation against the spec, not the plan |
 | `sdlc-promote` | Writes the feature doc, deletes the seed and spec, commits last |
 
@@ -103,10 +103,10 @@ sdlight only owns the gate between steps.
 
 Claude Code plugin and Pi package, from the same `skills/` and
 `templates/`. Both implement the same Agent Skills spec (SKILL.md plus
-frontmatter), so the skills are identical — only the manifest differs.
+frontmatter), so the skills are identical. Only the manifest differs.
 
 - **Install it** → [docs/install.md](docs/install.md)
-- **How it runs** — git, phases, human gates → [docs/workflow.md](docs/workflow.md)
+- **How it runs** (git, phases, human gates) → [docs/workflow.md](docs/workflow.md)
 - **Where files live** → [docs/layout.md](docs/layout.md)
 - **Model routing** → [docs/model-routing.md](docs/model-routing.md)
 - **Not built yet** → [docs/roadmap.md](docs/roadmap.md)

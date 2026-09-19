@@ -1,8 +1,8 @@
 # Model routing
 
 Reviewers that only check one document against another run on a cheaper
-model in fresh context. Everything that authors — and the final review,
-which needs judgment — inherits the session's model.
+model in fresh context. Everything that authors inherits the session's
+model, and so does the final review, which needs judgment.
 
 | Stage | Model | Context |
 |---|---|---|

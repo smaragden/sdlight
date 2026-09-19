@@ -23,7 +23,7 @@ pi install ../path/to/sdlight -l
 
 That writes the package into `.pi/settings.json`. Pi treats
 project-local packages as untrusted until you approve them, so the first
-`pi` run in that project asks — or pass `--approve`.
+`pi` run in that project asks, or pass `--approve`.
 
 From a git host, or from npm once published:
 
@@ -33,7 +33,7 @@ pi install npm:sdlight
 ```
 
 Pi reads the `pi.skills` field in `package.json` and loads
-`skills/*/SKILL.md` directly — no separate copy. You can also skip
+`skills/*/SKILL.md` directly, no separate copy. You can also skip
 packaging entirely and point Pi at a Claude Code skills directory:
 
 ```json
@@ -41,7 +41,7 @@ packaging entirely and point Pi at a Claude Code skills directory:
 ```
 
 Pi's loader accepts all eight skills with no warnings (checked against
-Pi 0.85.1). It ignores the `context` and `model` frontmatter keys — see
+Pi 0.85.1). It ignores the `context` and `model` frontmatter keys. See
 [model routing](model-routing.md).
 
 ## Templates
