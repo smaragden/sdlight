@@ -128,22 +128,32 @@ async function openSeedPicker(
 }
 
 type SeedStatus =
-  | { kind: "not-a-repo" }
-  | { kind: "no-seeds-dir" }
-  | { kind: "ok"; files: string[] };
+  | { kind: "no-seeds" }
+  // total: seed files in the vault. uncommitted: repo-relative paths of
+  // seeds not yet committed, or null when cwd isn't a git work tree.
+  | { kind: "ok"; total: number; uncommitted: string[] | null };
+
+/** Count the .md seed files in the vault. 0 when the directory is missing. */
+async function countSeeds(cwd: string): Promise<number> {
+  try {
+    const names = await readdir(join(cwd, SEEDS_DIR));
+    return names.filter((n) => n.endsWith(".md")).length;
+  } catch {
+    return 0;
+  }
+}
 
 /**
  * Return the seed files under docs/sdlight/seeds/ that have uncommitted
- * changes in the working tree (new/untracked, staged, or modified). These
- * are the seeds seed-capture wrote but that no workflow step has committed
- * yet. Deletions are not counted as "uncommitted seeds".
+ * changes in the working tree (new/untracked, staged, or modified), or
+ * null when cwd isn't a git work tree. Deletions are not counted.
  */
-async function getUncommittedSeeds(cwd: string): Promise<SeedStatus> {
+async function getUncommittedSeeds(cwd: string): Promise<string[] | null> {
   // Confirm we're inside a git work tree first.
   try {
     await execFileAsync("git", ["rev-parse", "--is-inside-work-tree"], { cwd });
   } catch {
-    return { kind: "not-a-repo" };
+    return null;
   }
 
   const { stdout } = await execFileAsync(
@@ -170,21 +180,28 @@ async function getUncommittedSeeds(cwd: string): Promise<SeedStatus> {
     files.add(path);
   }
 
-  return { kind: "ok", files: [...files].sort() };
+  return [...files].sort();
+}
+
+/** Vault size plus how many of those seeds are still uncommitted. */
+async function getSeedStatus(cwd: string): Promise<SeedStatus> {
+  const total = await countSeeds(cwd);
+  if (total === 0) return { kind: "no-seeds" };
+  const uncommitted = await getUncommittedSeeds(cwd);
+  return { kind: "ok", total, uncommitted };
 }
 
 function statusText(status: SeedStatus): string | undefined {
-  if (status.kind !== "ok") return undefined;
-  const n = status.files.length;
-  if (n === 0) return "🌱 seeds: clean";
-  return `🌱 seeds: ${n} uncommitted`;
+  if (status.kind !== "ok") return undefined; // no seeds — show nothing
+  const u = status.uncommitted?.length ?? 0;
+  if (u === 0) return `🌱 seeds: ${status.total}`;
+  return `🌱 seeds: ${status.total} (${u} uncommitted)`;
 }
 
 async function refresh(ctx: ExtensionContext): Promise<SeedStatus> {
-  const status = await getUncommittedSeeds(ctx.cwd);
+  const status = await getSeedStatus(ctx.cwd);
   const text = statusText(status);
-  if (text) ctx.ui.setStatus(STATUS_KEY, text);
-  else ctx.ui.setStatus(STATUS_KEY, ""); // clear when not applicable
+  ctx.ui.setStatus(STATUS_KEY, text ?? ""); // clear when no seeds
   return status;
 }
 
@@ -202,22 +219,23 @@ export default function (pi: ExtensionAPI) {
 
   // On-demand detail: names of the uncommitted seeds.
   pi.registerCommand("seeds", {
-    description: "Show uncommitted seeds in this repo (docs/sdlight/seeds/)",
+    description: "Show the seed vault and any uncommitted seeds (docs/sdlight/seeds/)",
     handler: async (_args, ctx) => {
       const status = await refresh(ctx);
-      if (status.kind === "not-a-repo") {
-        ctx.ui.notify("Not a git repository — can't count seeds.", "warn");
+      if (status.kind === "no-seeds") {
+        ctx.ui.notify("No seeds yet. 🌱", "info");
         return;
       }
-      if (status.kind === "no-seeds-dir" || status.files.length === 0) {
-        ctx.ui.notify("No uncommitted seeds. 🌱", "info");
+      const uncommitted = status.uncommitted ?? [];
+      if (uncommitted.length === 0) {
+        ctx.ui.notify(`${status.total} seed(s), all committed. 🌱`, "info");
         return;
       }
-      const list = status.files
+      const list = uncommitted
         .map((f) => `  • ${f.replace(`${SEEDS_DIR}/`, "")}`)
         .join("\n");
       ctx.ui.notify(
-        `${status.files.length} uncommitted seed(s):\n${list}`,
+        `${status.total} seed(s), ${uncommitted.length} uncommitted — commit them to persist:\n${list}`,
         "info",
       );
     },
