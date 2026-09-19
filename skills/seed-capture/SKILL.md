@@ -24,19 +24,24 @@ created: <date>
 <the paragraph>
 ```
 
-3. Do **not** commit. A seed is a note, not a checkpoint. Write the file
-   and leave it as an uncommitted change in the working tree. It gets
-   swept into history later by a real workflow step (a brainstorm that
-   forks or consumes it, or a refine pass). This keeps seed capture safe
-   to do mid-session, alongside a concurrent session, and under
-   PR-only / protected-branch rules — it never moves `HEAD`.
-4. Confirm in one short line ("Seeded as
-   `docs/sdlight/seeds/<slug>.md` (uncommitted).") and stop. That line is the whole
-   reply. No "say brainstorm X when ready", no
-   next-step hint. Do not brainstorm it, do not ask clarifying questions,
-   do not expand it into a spec. If the user wants that, they'll ask for
-   a brainstorm session (sdlc-brainstorm) separately, possibly much
-   later.
+3. Don't commit on your own. A seed is a note, not a checkpoint: write
+   the file and leave it as an uncommitted change in the working tree.
+   Never move `HEAD` as a side effect of capture. This keeps capture
+   safe mid-session, alongside a concurrent session, and under PR-only /
+   protected-branch rules. Seeds normally enter history later through a
+   real workflow step (a brainstorm that forks or consumes one, or a
+   refine pass). But committing them directly is legitimate when the
+   user wants them to persist beyond this working tree — a fresh clone,
+   another machine, a shared roadmap. Do that only when the user
+   explicitly asks; still never auto-commit.
+4. Confirm in one short line that names the file, says it's uncommitted,
+   and nudges the user to commit it themselves if they want it to
+   persist — for example: "Seeded as `docs/sdlight/seeds/<slug>.md`
+   (uncommitted — commit it yourself if you want it to persist)." That
+   line is the whole reply. No brainstorm prompt, no other next-step
+   hint. Do not brainstorm it, do not ask clarifying questions, do not
+   expand it into a spec. If the user wants that, they'll ask for a
+   brainstorm session (sdlc-brainstorm) separately, possibly much later.
 
 ## Slugging
 
@@ -50,5 +55,5 @@ timestamp. If the slug already exists, append `-2`, `-3`, and so on.
 - Don't create a spec, plan, or feature doc from this skill.
 - Don't polish the idea beyond the user's actual thought. Compression
   should preserve intent, not add scope.
-- Don't commit, stage for commit, or otherwise touch git. Just write the
-  file.
+- Don't auto-commit or stage on your own. Write the file and leave git
+  alone unless the user explicitly asks you to commit.
