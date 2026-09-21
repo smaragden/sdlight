@@ -4,16 +4,22 @@ The rules sdlight operates under: how far it flows on its own, what
 commits, when it flips into "released" mode, and the handful of moments
 it stops to ask you.
 
-## Flow by default
+## Flow, and the one checkpoint
 
-Once you trigger a stage, the workflow runs forward through the pipeline
-on its own and stops only at a human gate (below). A clean spec flows
-into a plan, a passing plan flows into building, each passing step flows
-into the next, and a passing final review flows into promotion. You are
-not asked to confirm each hop.
+The spec is where your judgment matters, so the workflow stops there and
+hands back to you. Everything after it flows. Once you plan an approved
+spec, the plan, its review, the build, each step review, the final
+review, and promotion run in sequence without asking. They are gated
+throughout by review against the spec, which is why the plan needs no
+separate sign-off: if it drifts from the spec, plan review catches it,
+and final review checks the built code against the spec again.
 
-The one deliberate exception is seed capture. It files an idea and stops,
-because capturing a thought should never kick off building it.
+Two points never flow on their own:
+
+- **Seed capture** files an idea and stops. Capturing a thought should
+  never kick off building it.
+- **The spec.** Brainstorm writes it, then stops. You read it and
+  trigger planning when you're ready.
 
 ## Git is the only history
 
