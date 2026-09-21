@@ -84,10 +84,8 @@ don't manufacture them.
 ## Ending the session
 
 Confirm the spec's path and name anything that got forked into new
-seeds. Then name the next step plainly: when they're ready, plan the
-spec with sdlc-plan. State it as a one-line handoff, for example "Next:
-plan it with sdlc-plan when you're ready."
-
-Naming the next step is not the same as taking it. Don't start planning
-in the same breath and don't run sdlc-plan yourself. Planning is a
-separate, deliberate step the user triggers.
+seeds. Then keep the pipeline moving. If the spec's Open questions
+section is empty, flow straight into sdlc-plan for this slug without
+asking. If it lists anything, stop and put those questions to the user
+first. An open question is a human gate; with none, planning follows the
+spec automatically.

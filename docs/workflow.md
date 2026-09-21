@@ -1,7 +1,19 @@
 # How it runs
 
-The rules sdlight operates under: what commits, when it flips into
-"released" mode, and the handful of moments it stops to ask you.
+The rules sdlight operates under: how far it flows on its own, what
+commits, when it flips into "released" mode, and the handful of moments
+it stops to ask you.
+
+## Flow by default
+
+Once you trigger a stage, the workflow runs forward through the pipeline
+on its own and stops only at a human gate (below). A clean spec flows
+into a plan, a passing plan flows into building, each passing step flows
+into the next, and a passing final review flows into promotion. You are
+not asked to confirm each hop.
+
+The one deliberate exception is seed capture. It files an idea and stops,
+because capturing a thought should never kick off building it.
 
 ## Git is the only history
 
@@ -13,7 +25,14 @@ lives only in a working tree. Messages follow conventional commits.
   commits the plan there.
 - Each executed step is one commit on that branch, so step review sees
   exactly one step's diff.
-- Promotion is that branch's last commit. Merging is yours to do.
+- Promotion is that branch's last commit.
+
+**Pushing and pull requests are forbidden by default.** The workflow
+pushes a branch or opens a PR only when this repo's AGENTS.md records a
+rule allowing it. Ask for a push or a PR without that rule and the agent
+offers to write the rule into AGENTS.md first, then acts once you agree.
+Merging a PR is never the workflow's call. It happens only when you
+explicitly ask, in the moment.
 
 ## Project phase
 

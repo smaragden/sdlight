@@ -18,12 +18,16 @@ gate, and planning around it produces a plan that has to be redone.
    name real files and functions in the steps, no more.
 2. Write `docs/sdlight/plans/<slug>.md` from
    `docs/sdlight/templates/plan-template.md`.
-3. Hand the slug to sdlc-plan-review. Do not begin execution yourself.
+3. Hand the slug to sdlc-plan-review before writing any code. Do not
+   execute a plan that has not returned PASS.
 4. When the review returns PASS, create a branch named `<slug>` from the
-   current branch, commit the plan on it with message `docs(sdlight): plan <slug>`,
-   and stop. Execution starts on that branch, one commit per step, so
-   each step review sees exactly one step's diff and promotion can land
-   as the branch's last commit.
+   current branch and commit the plan on it with message
+   `docs(sdlight): plan <slug>`. Then flow into execution on that branch
+   without asking: build one step at a time, one commit per step, and run
+   sdlc-step-review on each step's diff before starting the next. When a
+   step passes, continue to the next; after the final step passes, run
+   sdlc-final-review for the slug. Stop only when a gate sends something
+   to a human.
 
 ## Writing the plan
 
@@ -50,5 +54,5 @@ gate, and planning around it produces a plan that has to be redone.
 ## What this skill does not do
 
 - Does not edit the spec. If the spec needs changing, say so and stop.
-- Does not run the code or start implementation.
+- Does not start implementation before plan review returns PASS.
 - Does not skip the review gate, even for a plan that looks trivial.

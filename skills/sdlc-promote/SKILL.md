@@ -28,18 +28,26 @@ stop and say so.
    still exists. The brainstorm session usually deletes it on promotion
    to spec. Skip this step in that case.
 4. **Commit on the feature branch.** The feature doc write and the two
-   deletions go in one commit as the last commit on the branch before it
-   merges. This commit lands the feature code too, so write a
-   conventional-commit message whose type reflects the actual change
-   (`feat`, `fix`, and so on) and whose subject names the feature — not
-   `docs`. Never on main after the merge, and never in a later PR. Leave the plan document alone. It stays as
-   the historical record of how the feature was built.
-5. **Run sdlc-refine** so the project doc stops listing this feature as
+   deletions go in one commit, the last commit on the branch. This
+   commit lands the feature code too, so write a conventional-commit
+   message whose type reflects the actual change (`feat`, `fix`, and so
+   on) and whose subject names the feature, not `docs`. Leave the plan
+   document alone; it stays as the historical record of how the feature
+   was built.
+5. **Push and open a PR only if the repo permits it.** Pushing and pull
+   requests are forbidden by default, allowed only when the repo's
+   AGENTS.md records a rule permitting them. With that rule present, push
+   the branch and open a PR for the feature. Without it, leave the branch
+   local. If the user asks you to push or open a PR and no such rule
+   exists, offer to add the rule to the repo's AGENTS.md, and proceed
+   only once they agree and it is recorded. Never merge the PR yourself;
+   merging is the user's explicit call.
+6. **Run sdlc-refine** so the project doc stops listing this feature as
    an open thread and starts listing it in the feature map.
 
 ## What this skill does not do
 
 - Does not write or touch the plan doc.
-- Does not merge the branch. That's the user's call, here or in a PR.
+- Does not merge the branch or the PR. That is the user's explicit call.
 - Does not ask for confirmation before deleting the seed and spec. Being
   automatic is the point.
