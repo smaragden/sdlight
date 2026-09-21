@@ -31,13 +31,13 @@ created: <date>
    protected-branch rules. Seeds normally enter history later through a
    real workflow step (a brainstorm that forks or consumes one, or a
    refine pass). But committing them directly is legitimate when the
-   user wants them to persist beyond this working tree — a fresh clone,
-   another machine, a shared roadmap. Do that only when the user
+   user wants them to persist beyond this working tree, say a fresh
+   clone, another machine, or a shared roadmap. Do that only when the user
    explicitly asks; still never auto-commit.
 4. Confirm in one short line that names the file, says it's uncommitted,
    and nudges the user to commit it themselves if they want it to
-   persist — for example: "Seeded as `docs/sdlight/seeds/<slug>.md`
-   (uncommitted — commit it yourself if you want it to persist)." That
+   persist. For example: "Seeded as `docs/sdlight/seeds/<slug>.md`
+   (uncommitted, commit it yourself if you want it to persist)." That
    line is the whole reply. No brainstorm prompt, no other next-step
    hint. Do not brainstorm it, do not ask clarifying questions, do not
    expand it into a spec. If the user wants that, they'll ask for a
@@ -57,3 +57,6 @@ timestamp. If the slug already exists, append `-2`, `-3`, and so on.
   should preserve intent, not add scope.
 - Don't auto-commit or stage on your own. Write the file and leave git
   alone unless the user explicitly asks you to commit.
+- Don't call an idea "seeded" unless the file exists at
+  `docs/sdlight/seeds/<slug>.md`. Recording it in a spec, a summary, or
+  the conversation is not seeding it. A seed is the file, nothing else.

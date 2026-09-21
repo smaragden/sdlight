@@ -37,13 +37,18 @@ don't manufacture them.
    there's honestly one sensible path, name it plainly and move to the
    spec. Don't manufacture alternatives to hit a quota. This is a
    brainstorm-time read, not a label carried on the seed.
-4. **Watch for out-of-scope tangents as they come up.** The moment
-   something surfaces that isn't core to this feature, whether a related
-   but separate idea or a "we should also...", say so and capture it as a
-   new seed right away. Same format as seed-capture: a short paragraph
-   in `docs/sdlight/seeds/<slug>.md`. Don't let it bloat the spec, and
-   don't lose it either. Mention it to the user in passing ("that's a
-   separate thing, I've seeded it") and keep going.
+4. **Watch for out-of-scope tangents and deferrals as they come up.**
+   The moment something surfaces that isn't core to this feature, a
+   related but separate idea, a "we should also...", or a route you set
+   aside as "later, not now", capture it as a seed right away. Seeding
+   means one concrete thing: writing the file
+   `docs/sdlight/seeds/<slug>.md` (a short paragraph, seed-capture's
+   format). An idea noted only in the spec, in the conversation, or in a
+   summary is not seeded. Say a seed exists only after you have written
+   the file, and name its actual path. Never call something seeded as a
+   figure of speech. A deferral kept only in the spec's Roads not taken
+   dies when promotion deletes the spec, so it has to become a real
+   seed. Keep the spec lean and move on.
 5. **Settle any temporary rules.** Ask whether to impose deliberate
    constraints on this feature: a palette that sharpens the work (no
    new dependencies, one file, no network, and so on). These are chosen
@@ -59,8 +64,12 @@ don't manufacture them.
 8. **Delete the seed this spec came from**, if there was one. The spec
    now supersedes it. Leave unrelated seeds alone.
 9. **Commit** the spec, the seed deletion, and any seeds forked during
-   the session, in one commit, message `docs(sdlight): spec <slug>`. A spec that
-   isn't committed isn't in history, and promotion deletes it later.
+   the session, in one commit, message `docs(sdlight): spec <slug>`.
+   Before you commit, run `ls docs/sdlight/seeds/` and confirm every idea
+   you told the user was seeded is a real file there and is staged. A
+   seed you named but never wrote, or wrote but left unstaged, is the
+   failure this check exists to catch. A spec that isn't committed isn't
+   in history, and promotion deletes it later.
 10. **Run sdlc-refine.**
 
 ## Writing the spec
@@ -83,8 +92,9 @@ don't manufacture them.
 
 ## Ending the session
 
-Confirm the spec's path and name anything that got forked into new
-seeds. Then stop. The spec is the one place that wants your judgment, so
+Confirm the spec's path, then list the seeds you forked by their actual
+committed paths. Report a seed as captured only if its file exists and is
+in the commit, never as a figure of speech. Then stop. The spec is the one place that wants your judgment, so
 this is where the workflow hands back to you: read it, sit with it, and
 plan it with sdlc-plan when you're ready. State the handoff in one line,
 for example "Next: plan it with sdlc-plan when you're ready."

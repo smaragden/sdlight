@@ -1,7 +1,7 @@
 {
   "name": "sdlight",
   "description": "Lightweight SDLC for a solo developer. Seed, spec, plan, feature doc, with review gates between plan and code.",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "author": {
     "name": "Diddi"
   }

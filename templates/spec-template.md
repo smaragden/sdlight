@@ -12,9 +12,12 @@ source_seeds: [<seed-file-1>, <seed-file-2>]
 What this feature covers. Be concrete about boundaries.
 
 ## Roads not taken
-The distinct routes weighed during brainstorming and why this one won,
-one line each. If the idea honestly had one sensible route, say so. This
-is background for a later reader, not something a review gate checks.
+Approaches you weighed and rejected outright, one line each with why this
+one won. Rejections only. This section is deleted with the spec on
+promotion, so nothing here is meant to survive. A route set aside as
+"later, not now" is not a rejection: capture it as a seed and note it
+under Non-goals, or it is lost at promotion. If the idea honestly had one
+sensible route, say so. Not checked by any review gate.
 
 ## Behavior
 The essential behavior the implementation must produce. Inputs, outputs,

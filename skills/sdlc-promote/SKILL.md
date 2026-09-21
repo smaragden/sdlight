@@ -23,12 +23,19 @@ stop and say so.
    spec's original intent. Where implementation deviated from the spec, the
    feature doc records the deviation as current reality without flagging
    or explaining it. The plan and git history hold that.
-2. **Delete the source spec** at `docs/sdlight/specs/<slug>.md`.
+2. **Salvage deferrals, then delete the source spec** at
+   `docs/sdlight/specs/<slug>.md`. Before deleting, read its Roads not
+   taken and Non-goals one last time. Any deferred follow-up there (a
+   "later, not now" idea, a real future possibility) that isn't already a
+   file under `docs/sdlight/seeds/` gets written as a seed now, so it
+   survives the deletion. Do not re-seed outright rejections. This is the
+   last point before the spec is gone for good. Then delete the spec.
 3. **Delete the source seed** at `docs/sdlight/seeds/<slug>.md`, if it
    still exists. The brainstorm session usually deletes it on promotion
    to spec. Skip this step in that case.
-4. **Commit on the feature branch.** The feature doc write and the two
-   deletions go in one commit, the last commit on the branch. This
+4. **Commit on the feature branch.** The feature doc write, the two
+   deletions, and any deferral seeds you salvaged in step 2 go in one
+   commit, the last commit on the branch. This
    commit lands the feature code too, so write a conventional-commit
    message whose type reflects the actual change (`feat`, `fix`, and so
    on) and whose subject names the feature, not `docs`. Leave the plan
