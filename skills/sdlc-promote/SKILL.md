@@ -34,8 +34,9 @@ stop and say so.
    still exists. Brainstorm usually deletes it when it writes the spec,
    so this step is often a no-op.
 4. **Commit on the feature branch.** The feature doc, the two
-   deletions, and any seeds you salvaged in step 2 go in one commit, the
-   last on the branch. This commit lands the feature, so write a
+   deletions, any seeds you salvaged in step 2, and any uncommitted
+   seeds forked during the build go in one commit, the last on the
+   branch. This commit lands the feature, so write a
    conventional-commit message whose type reflects the actual change
    (`feat`, `fix`, and so on) and whose subject names the feature, not
    `docs`. Leave the plan alone. It stays as the record of how the

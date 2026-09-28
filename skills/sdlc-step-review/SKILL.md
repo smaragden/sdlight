@@ -17,7 +17,8 @@ checks the step, not the feature. The final review checks the feature.
 1. The diff does what the step says, no less.
 2. The diff does not touch anything the step doesn't name. Unrelated
    cleanup, however tempting, is a FAIL, because it lands without a
-   step to review it against.
+   step to review it against. New seed files under `docs/sdlight/seeds/`
+   are not part of the step. Ignore them.
 3. Someone ran the verification the step names, and its output shows it
    passing. If the output isn't in front of you, run it yourself.
 

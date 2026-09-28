@@ -29,6 +29,18 @@ gate, and planning around it produces a plan that has to be redone.
    sdlc-final-review for the slug. Stop only when a gate sends something
    to a human.
 
+## Seeding scope creep
+
+Planning and building both surface ideas the spec doesn't ask for: a
+related feature, a refactor, a cleanup you'd like to make while you're
+in the file. Don't fold them into the plan or the code. Seed each one
+with seed-capture and keep going.
+
+- Seeds forked while planning go in the plan commit.
+- Seeds forked while building stay out of the step commits, so each
+  step's diff is exactly that step. sdlc-promote commits them at the
+  end.
+
 ## Writing the plan
 
 - The Spec coverage section is the contract. Copy every Behavior line
@@ -56,3 +68,4 @@ gate, and planning around it produces a plan that has to be redone.
 - Does not edit the spec. If the spec needs changing, say so and stop.
 - Does not start implementation before plan review returns PASS.
 - Does not skip the review gate, even for a plan that looks trivial.
+- Does not build anything the spec doesn't ask for. That goes in a seed.
