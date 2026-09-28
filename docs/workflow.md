@@ -1,77 +1,74 @@
-# How it runs
+# Workflow
 
-The rules sdlight operates under: how far it flows on its own, what
-commits, when it flips into "released" mode, and the handful of moments
-it stops to ask you.
+How far sdlight runs on its own, what it commits, how the project phase
+changes its reviews, and when it stops to ask you.
 
-## Flow, and the one checkpoint
+## What runs on its own
 
-The spec is where your judgment matters, so the workflow stops there and
-hands back to you. Everything after it flows. Once you plan an approved
-spec, the plan, its review, the build, each step review, the final
-review, and promotion run in sequence without asking. They are gated
-throughout by review against the spec, which is why the plan needs no
-separate sign-off: if it drifts from the spec, plan review catches it,
-and final review checks the built code against the spec again.
+The workflow stops after the spec and hands it back to you. Everything
+after that runs in sequence without asking: the plan, plan review, the
+build, each step review, final review, and promotion. The plan needs no
+separate sign-off from you, because plan review checks it against the
+spec and final review checks the finished code against the spec again.
 
-Two points never flow on their own:
+Two steps never lead into the next one on their own:
 
-- **Seed capture** files an idea and stops. Capturing a thought should
-  never kick off building it.
-- **The spec.** Brainstorm writes it, then stops. You read it and
-  trigger planning when you're ready.
+- **Seed capture** saves the idea and stops. Writing down an idea should
+  never start building it.
+- **The spec.** Brainstorm writes it and stops. You read it and ask for a
+  plan when you're ready.
 
-## Git is the only history
+## Git
 
-Every skill that writes a file commits it, so nothing sdlight produces
-lives only in a working tree. Messages follow conventional commits.
+Every skill that writes a file commits it, using
+[conventional commit](https://www.conventionalcommits.org) messages. The
+one exception is seed capture: it leaves the seed uncommitted unless you
+ask it to commit.
 
-- Seeds, specs, and refine passes commit on whatever branch you're on.
-- A passing plan review creates a branch named after the slug and
-  commits the plan there.
-- Each executed step is one commit on that branch, so step review sees
+- Specs and refine passes commit on your current branch.
+- When plan review passes, sdlight creates a branch named after the
+  feature and commits the plan there.
+- Each step of the plan is one commit on that branch, so step review sees
   exactly one step's diff.
-- Promotion is that branch's last commit.
+- Promotion is the branch's last commit.
 
-**Pushing and pull requests are forbidden by default.** The workflow
-pushes a branch or opens a PR only when this repo's AGENTS.md records a
-rule allowing it. Ask for a push or a PR without that rule and the agent
-offers to write the rule into AGENTS.md first, then acts once you agree.
-Merging a PR is never the workflow's call. It happens only when you
-explicitly ask, in the moment.
+sdlight doesn't push or open pull requests unless your project's
+`AGENTS.md` says it may. If you ask for a push or a PR without that rule
+in place, the agent offers to add the rule first. It never merges a pull
+request unless you ask it to at that moment.
 
 ## Project phase
 
-`docs/sdlight/PROJECT.md` carries one hand-set frontmatter line:
+`docs/sdlight/PROJECT.md` has one line you set by hand:
 
 ```
 phase: pre-release
 ```
 
-It's `pre-release` or `released`; a missing file or line means
-`pre-release`. Refinement copies it forward and never changes it. Flip
-it to `released` yourself once real users depend on the project.
+The value is `pre-release` or `released`. If the file or the line is
+missing, sdlight treats the project as `pre-release`. `sdlc-refine` keeps
+the line as it is. Change it to `released` yourself once people depend on
+the project.
 
-**In pre-release, breaking things is free.** Brainstorm doesn't ask
-about backward compatibility or write migrations into a spec, plan
-review treats a shim or alias step as unasked-for work, and final review
-never fails a feature for changing what came before.
+**In pre-release, breaking changes are fine.** Brainstorm doesn't ask
+about backward compatibility or put migrations in the spec. Plan review
+treats a compatibility shim nobody asked for as extra work. Final review
+never fails a feature for changing earlier behavior.
 
-**In released, documented behavior is a contract.** A spec that changes
-behavior a feature doc describes has to say so, and say what happens to
-existing users. Plan review and final review then treat an unsanctioned
-change to documented behavior as a gap or a failure.
+**In released, documented behavior is a promise.** A spec that changes
+behavior described in a feature doc must say so, and say what happens to
+existing users. Plan review and final review flag any such change the
+spec didn't approve.
 
-## Human gates
+## When it stops to ask
 
-sdlight asks a human at exactly these points, and nowhere else:
+sdlight asks you only in these cases:
 
-- The spec's Open questions section is non-empty when planning starts.
-- Plan review returns HOLD because the plan's Risks section lists an
-  assumption.
-- Plan review returns GAPS three times for the same plan.
-- Step review returns FAIL three times for the same step.
+- The spec's Open questions section isn't empty when planning starts.
+- Plan review returns HOLD because the plan lists an assumption only you
+  can confirm.
+- Plan review returns GAPS for the third time on the same plan.
+- Step review returns FAIL for the third time on the same step.
 - Final review returns FAIL or HOLD.
 
-Everything else runs without asking. Promotion, in particular, never
-asks.
+Everything else runs without asking, including promotion.

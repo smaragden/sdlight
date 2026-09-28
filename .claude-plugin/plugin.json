@@ -1,8 +1,12 @@
 {
   "name": "sdlight",
-  "description": "Lightweight SDLC for a solo developer. Seed, spec, plan, feature doc, with review gates between plan and code.",
-  "version": "0.1.12",
+  "description": "A lightweight development workflow for one developer and a coding agent. Seed, spec, plan, feature doc, with review gates.",
+  "version": "0.1.13",
   "author": {
-    "name": "Diddi"
-  }
+    "name": "smaragden",
+    "url": "https://github.com/smaragden"
+  },
+  "homepage": "https://github.com/smaragden/sdlight",
+  "repository": "https://github.com/smaragden/sdlight",
+  "license": "MIT"
 }

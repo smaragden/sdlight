@@ -1,8 +1,11 @@
-# Not built yet
+# Roadmap
 
-Honest gaps, not promises.
+Known gaps.
 
-- **A Pi extension shim** so `model` and `context: fork` are honored
-  there, not just on Claude Code. See [model routing](model-routing.md).
-- **Feature sunsetting.** Feature docs carry no `status` field until
-  there's a workflow that sets one.
+- **Model routing on Pi.** An extension that makes Pi honor the `model`
+  and `context: fork` settings. See [model routing](model-routing.md).
+- **Retiring features.** Feature docs have no `status` field, because
+  nothing sets one yet. That changes once there's a workflow for retiring
+  a feature.
+- **Project setup.** A skill that starts a new project's vault and copies
+  the templates, instead of doing it by hand.

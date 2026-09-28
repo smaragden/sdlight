@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="312" viewBox="0 0 460 312" role="img" aria-label="What sdlc-promote keeps and deletes">
+<title>What sdlc-promote keeps and deletes</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6e7681"/></marker></defs>
+<rect x="0.5" y="0.5" width="459" height="311" rx="12" fill="#0d1117" stroke="#30363d"/>
+<text x="105.0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#9198a1" text-anchor="middle" >While you build</text>
+<text x="355.0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#9198a1" text-anchor="middle" >Once it ships</text>
+<rect x="20" y="60" width="170" height="48" rx="8" fill="#3a1519" stroke="#f85149" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="105.0" y="81.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" fill="#ffa198" text-anchor="middle" >seed</text>
+<line x1="85.8" y1="76.0" x2="124.2" y2="76.0" stroke="#ffa198" stroke-width="1.5"/>
+<text x="105.0" y="99.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#ffa198" text-anchor="middle" fill-opacity="0.8">deleted</text>
+<rect x="20" y="120" width="170" height="48" rx="8" fill="#3a1519" stroke="#f85149" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="105.0" y="141.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" fill="#ffa198" text-anchor="middle" >spec</text>
+<line x1="85.8" y1="136.0" x2="124.2" y2="136.0" stroke="#ffa198" stroke-width="1.5"/>
+<text x="105.0" y="159.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#ffa198" text-anchor="middle" fill-opacity="0.8">deleted</text>
+<rect x="20" y="180" width="170" height="48" rx="8" fill="#12261e" stroke="#3fb950" stroke-width="1.5"/>
+<text x="105.0" y="209.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" fill="#7ee2a8" text-anchor="middle" >plan</text>
+<rect x="20" y="240" width="170" height="48" rx="8" fill="#12261e" stroke="#3fb950" stroke-width="1.5"/>
+<text x="105.0" y="269.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" fill="#7ee2a8" text-anchor="middle" >code</text>
+<rect x="270" y="90.0" width="170" height="48" rx="8" fill="#12261e" stroke="#3fb950" stroke-width="1.5"/>
+<text x="355.0" y="111.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" fill="#7ee2a8" text-anchor="middle" >plan</text>
+<text x="355.0" y="129.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#7ee2a8" text-anchor="middle" fill-opacity="0.8">how it was built</text>
+<rect x="270" y="150.0" width="170" height="48" rx="8" fill="#12261e" stroke="#3fb950" stroke-width="1.5"/>
+<text x="355.0" y="179.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" fill="#7ee2a8" text-anchor="middle" >code</text>
+<rect x="270" y="210.0" width="170" height="48" rx="8" fill="#12261e" stroke="#3fb950" stroke-width="1.5"/>
+<text x="355.0" y="231.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15.5" font-weight="600" fill="#7ee2a8" text-anchor="middle" >feature doc</text>
+<text x="355.0" y="249.0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#7ee2a8" text-anchor="middle" fill-opacity="0.8">what it is now</text>
+<path d="M202,174.0 L258,174.0" fill="none" stroke="#6e7681" stroke-width="1.5" marker-end="url(#head)"/>
+<text x="230.0" y="164.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12.5" font-weight="400" fill="#9198a1" text-anchor="middle" >promote</text>
+</svg>
