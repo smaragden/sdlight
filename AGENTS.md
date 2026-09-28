@@ -24,10 +24,12 @@ meant to edit it.
 ## Development
 
 - Skills live in `skills/<name>/SKILL.md`, templates in `templates/`.
-- Manifests are `.claude-plugin/plugin.json` and `package.json`. Keep
-  their `version` fields in sync.
-- A behavior change to a skill is a real change. Bump the patch version
-  in both manifests and commit.
+- Don't edit the `version` fields in `.claude-plugin/plugin.json` or
+  `package.json`. release-please bumps both and writes `CHANGELOG.md`
+  from the commit types on `main`.
+- A behavior change to a skill is a real change. Type it `fix` or
+  `feat`, not `docs`, so it ships in a release. Mark a breaking change
+  with `!`, as in `feat!:`.
 - Commit your work normally. Seed capture's "don't auto-commit" rule is
   product behavior, not a rule for this repo.
 - The README diagrams are generated. Edit `scripts/diagrams.py`, run

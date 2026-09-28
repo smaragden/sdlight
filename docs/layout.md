@@ -34,6 +34,8 @@ templates/             spec, plan, feature doc, and project doc templates
 extensions/            Pi extension: seed count, /seeds, /browse-seeds
 scripts/diagrams.py    generates the README diagrams in docs/img/
 docs/sdlight/          sdlight's own vault, from building sdlight with itself
+.github/workflows/     release-please, which versions and releases sdlight
 ```
 
-Keep the `version` fields in `plugin.json` and `package.json` in sync.
+release-please owns the `version` fields and `CHANGELOG.md`. See
+[CONTRIBUTING](../CONTRIBUTING.md).
