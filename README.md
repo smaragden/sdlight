@@ -12,6 +12,20 @@ sdlight is eight agent skills. They run on [Claude Code](https://claude.com/clau
 and [Pi](https://github.com/earendil-works/pi) from the same source and
 need no other plugins.
 
+## Why
+
+Spec-driven development is a great fit for coding agents, but the
+workflows around it tend to be bureaucratic and slow. I wanted something
+lighter that leaves room for creativity.
+
+- **Ideas first.** Ideas show up at any time. A seed takes one sentence
+  to capture and waits until you want it.
+- **What, not how.** A spec only matters while you build it. Once a
+  feature ships, its seed and spec are deleted. What's left is the code,
+  a feature doc, and `PROJECT.md`, and that's what future work builds on.
+- **Plans are history.** Plans stay in the repo as a record of how
+  something was built, not as docs to keep up to date.
+
 ## Quick start
 
 In Claude Code:
