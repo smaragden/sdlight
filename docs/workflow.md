@@ -25,6 +25,10 @@ Every skill that writes a file commits it, using
 one exception is seed capture: it leaves the seed uncommitted unless you
 ask it to commit.
 
+Any step can fork a seed when work starts to creep out of scope. Seeds
+forked while planning go in the plan commit. Seeds forked while building
+stay out of the step commits and are committed at promotion.
+
 - Specs and refine passes commit on your current branch.
 - When plan review passes, sdlight creates a branch named after the
   feature and commits the plan there.

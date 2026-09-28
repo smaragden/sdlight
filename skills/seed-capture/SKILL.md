@@ -1,6 +1,6 @@
 ---
 name: seed-capture
-description: Capture a rough, small, or half-formed idea into the seed vault (docs/sdlight/seeds/) as a short paragraph, fast. Use this whenever the user drops in a quick idea, a "what if we...", a passing thought about a feature, or explicitly says to save, note, or seed an idea, even if it's vague or clearly out of scope for now. Do not use this for fully formed feature requests ready to be worked on now. Those go through sdlc-brainstorm instead. This skill is about speed and low friction, not analysis.
+description: Capture a rough, small, or half-formed idea into the seed vault (docs/sdlight/seeds/) as a short paragraph, fast. Use this whenever the user drops in a quick idea, a "what if we...", a passing thought about a feature, or explicitly says to save, note, or seed an idea ("seed it"), even if it's vague or clearly out of scope for now. Also use it on your own initiative during any other work, whenever an idea comes up that is out of scope for the task at hand: a related feature, a cleanup, a "we should also...". Seed it instead of doing it or losing it. Do not use this for fully formed feature requests ready to be worked on now. Those go through sdlc-brainstorm instead. This skill is about speed and low friction, not analysis.
 ---
 
 # Seed capture
@@ -28,7 +28,8 @@ created: <date>
    leave it uncommitted. Never move `HEAD` as a side effect of capture.
    That keeps capture safe mid-session, next to another session, and on
    protected branches. Seeds normally enter history later, through a
-   brainstorm that consumes or forks one, or a refine pass. Commit a
+   brainstorm that consumes or forks one, a plan commit, promotion, or a
+   refine pass. Commit a
    seed directly only when the user explicitly asks, for example to keep
    it across clones or machines.
 4. Confirm in one short line that names the file, says it's uncommitted,
@@ -39,6 +40,14 @@ created: <date>
    hint. Do not brainstorm it, do not ask clarifying questions, do not
    expand it into a spec. If the user wants that, they'll ask for a
    brainstorm session (sdlc-brainstorm) separately, possibly much later.
+
+## Capturing mid-task
+
+When you seed an idea on your own during other work, don't stop that
+work. Write the seed, mention it in one line ("Seeded
+`docs/sdlight/seeds/<slug>.md` to revisit later."), and carry on with
+the task. The idea is out of scope for now, which is the point of
+seeding it.
 
 ## Slugging
 
