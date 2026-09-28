@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "d8bb1007993dfcd9fe81d875eb82cdfe2a9abd50",
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "sdlight",
+      "bump-minor-pre-major": true,
+      "include-component-in-tag": false,
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    }
+  }
+}
