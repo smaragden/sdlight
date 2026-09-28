@@ -28,7 +28,7 @@ meant to edit it.
   `package.json`. release-please bumps both and writes `CHANGELOG.md`
   from the commit types on `main`.
 - A behavior change to a skill is a real change. Type it `fix` or
-  `feat`, not `docs`, so it ships in a release. Mark a breaking change
+  `feat`, not `docs`, so it gets the right version bump. Mark a breaking change
   with `!`, as in `feat!:`.
 - Commit your work normally. Seed capture's "don't auto-commit" rule is
   product behavior, not a rule for this repo.

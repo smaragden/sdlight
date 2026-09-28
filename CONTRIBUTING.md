@@ -19,7 +19,7 @@ affects.
 - **Versions.** Don't edit them. release-please reads the commit types
   on `main`, bumps both manifests, and writes `CHANGELOG.md` in a release
   PR. A change to how a skill behaves is `fix` or `feat`, not `docs`, so
-  it ships in a release.
+  it gets the right version bump and changelog section.
 - **Prose.** Plain and short. No em dashes, arrow symbols, or curly
   quotes. Text in a skill leaks into everything the skill produces.
 - **Diagrams.** The README diagrams are generated. Edit
