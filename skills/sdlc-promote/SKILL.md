@@ -31,16 +31,15 @@ stop and say so.
    survives the deletion. Do not re-seed outright rejections. This is the
    last point before the spec is gone for good. Then delete the spec.
 3. **Delete the source seed** at `docs/sdlight/seeds/<slug>.md`, if it
-   still exists. The brainstorm session usually deletes it on promotion
-   to spec. Skip this step in that case.
-4. **Commit on the feature branch.** The feature doc write, the two
-   deletions, and any deferral seeds you salvaged in step 2 go in one
-   commit, the last commit on the branch. This
-   commit lands the feature code too, so write a conventional-commit
-   message whose type reflects the actual change (`feat`, `fix`, and so
-   on) and whose subject names the feature, not `docs`. Leave the plan
-   document alone; it stays as the historical record of how the feature
-   was built.
+   still exists. Brainstorm usually deletes it when it writes the spec,
+   so this step is often a no-op.
+4. **Commit on the feature branch.** The feature doc, the two
+   deletions, and any seeds you salvaged in step 2 go in one commit, the
+   last on the branch. This commit lands the feature, so write a
+   conventional-commit message whose type reflects the actual change
+   (`feat`, `fix`, and so on) and whose subject names the feature, not
+   `docs`. Leave the plan alone. It stays as the record of how the
+   feature was built.
 5. **Push and open a PR only if the repo permits it.** Pushing and pull
    requests are forbidden by default, allowed only when the repo's
    AGENTS.md records a rule permitting them. With that rule present, push

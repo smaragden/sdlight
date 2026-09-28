@@ -28,7 +28,7 @@ interactive TUI (for example print, json, or rpc modes) the command
 reports that browsing needs the interactive TUI and does nothing else.
 
 ## Interfaces
-- Command: `/browse-seeds` — "Browse seeds and take one to brainstorming".
+- Command: `/browse-seeds`, described as "Browse seeds and take one to brainstorming".
 - Popup keys: up/down navigate, `r` random, Enter brainstorm, Esc cancel.
 - Reads: seed files under `docs/sdlight/seeds/*.md`.
 - Emits: a user message `/skill:sdlc-brainstorm <path>` on selection.

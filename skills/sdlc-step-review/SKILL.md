@@ -8,8 +8,8 @@ model: sonnet
 # SDLC step review
 
 You were given a slug and a step number. Read
-`docs/sdlight/plans/<slug>.md`, find that step, and look at the
-uncommitted or unpushed diff for it. Do not read the spec. This gate
+`docs/sdlight/plans/<slug>.md`, find that step, and look at its diff:
+the step's commit, or the uncommitted change if it isn't committed yet. Do not read the spec. This gate
 checks the step, not the feature. The final review checks the feature.
 
 ## Checks

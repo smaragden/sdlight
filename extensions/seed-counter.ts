@@ -21,7 +21,7 @@ const STATUS_KEY = "sdlight-seeds";
 const PREVIEW_LINES = 10;
 
 export interface Seed {
-  /** Filename without .md — used as the seed's title. */
+  /** Filename without .md, used as the seed's title. */
   slug: string;
   /** Repo-relative path, e.g. docs/sdlight/seeds/foo.md. */
   path: string;
@@ -230,7 +230,7 @@ async function getUncommittedSeeds(cwd: string): Promise<string[] | null> {
     // Strip surrounding quotes git adds for paths with special chars.
     if (path.startsWith('"') && path.endsWith('"')) path = path.slice(1, -1);
     if (!path.endsWith(".md")) continue;
-    // Skip pure deletions — the seed is gone, not pending.
+    // Skip pure deletions: the seed is gone, not pending.
     if (index === "D" || worktree === "D") continue;
     files.add(path);
   }
@@ -247,7 +247,7 @@ async function getSeedStatus(cwd: string): Promise<SeedStatus> {
 }
 
 function statusText(status: SeedStatus): string | undefined {
-  if (status.kind !== "ok") return undefined; // no seeds — show nothing
+  if (status.kind !== "ok") return undefined; // no seeds, show nothing
   const u = status.uncommitted?.length ?? 0;
   if (u === 0) return `🌱 seeds: ${status.total}`;
   return `🌱 seeds: ${status.total} (${u} uncommitted)`;
@@ -290,7 +290,7 @@ export default function (pi: ExtensionAPI) {
         .map((f) => `  • ${f.replace(`${SEEDS_DIR}/`, "")}`)
         .join("\n");
       ctx.ui.notify(
-        `${status.total} seed(s), ${uncommitted.length} uncommitted — commit them to persist:\n${list}`,
+        `${status.total} seed(s), ${uncommitted.length} uncommitted, commit them to keep them:\n${list}`,
         "info",
       );
     },
