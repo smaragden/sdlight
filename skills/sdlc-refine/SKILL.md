@@ -5,7 +5,7 @@ description: Run the refinement pass across the whole seed vault and spec set. F
 
 # SDLC refinement pass
 
-A bounded, mechanical gardening pass over `docs/sdlight/seeds/`,
+A bounded, mechanical maintenance pass over `docs/sdlight/seeds/`,
 `docs/sdlight/specs/`, and `docs/sdlight/features/`. Not a creative
 task, and not an excuse to re-litigate any spec's content.
 
@@ -57,7 +57,7 @@ task, and not an excuse to re-litigate any spec's content.
      the previous version's wording where nothing changed.
    - When there are no seeds, delete `docs/sdlight/SEEDS.md` if it exists;
      don't write an empty graph.
-5. **Project doc** (`docs/sdlight/PROJECT.md` or equivalent)
+5. **Project doc** (`docs/sdlight/PROJECT.md`)
    - Regenerate from the current `docs/sdlight/features/*.md` set, using
      `docs/sdlight/templates/project-doc-template.md`.
    - Anchor on the previous version for structure and phrasing. Unchanged

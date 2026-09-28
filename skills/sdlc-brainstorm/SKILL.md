@@ -14,9 +14,9 @@ are the edges? Push back if the idea is vague or if two different ideas
 are tangled together.
 
 Explore before you converge. The fastest way to a weak spec is
-committing to the first route that works. When an idea has room to sway,
-put real alternatives on the table first, then choose. When it doesn't,
-don't manufacture them.
+committing to the first route that works. When an idea allows different
+approaches, put real alternatives on the table first, then choose. When
+it doesn't, don't invent them.
 
 ## Flow
 
@@ -26,17 +26,16 @@ don't manufacture them.
 2. **Converse until the essence is clear.** Don't rush to a spec. If the
    idea is already sharp, this can be short. If it's vague, keep asking
    until it isn't.
-3. **Gauge the latitude, then explore routes.** First read how much
-   room the idea has to sway. Some ideas are wide open and want several
-   routes on the table; others are a straightforward implementation
-   with one sensible path. Scale the exploration to fit. Where there's
-   latitude, lay out two or three genuinely distinct approaches, each
-   with what it optimizes for and its tradeoffs or risks, then converge
-   with the user on one. This is the experimentation phase: generate
-   possibilities, don't prune to the first one that works. Where
-   there's honestly one sensible path, name it plainly and move to the
-   spec. Don't manufacture alternatives to hit a quota. This is a
-   brainstorm-time read, not a label carried on the seed.
+3. **Judge how open the idea is, then explore routes.** Some ideas are
+   wide open and want several routes on the table. Others are a
+   straightforward implementation with one sensible path. Scale the
+   exploration to fit. Where there is room, lay out two or three
+   distinct approaches, each with what it optimizes for and its
+   tradeoffs or risks, then agree on one with the user. Don't settle for
+   the first one that works. Where there is only one sensible path, name
+   it and move on to the spec. Don't invent alternatives to fill a
+   quota. This judgment belongs to the brainstorm and is not recorded on
+   the seed.
 4. **Watch for out-of-scope tangents and deferrals as they come up.**
    The moment something surfaces that isn't core to this feature, a
    related but separate idea, a "we should also...", or a route you set
@@ -49,11 +48,10 @@ don't manufacture them.
    figure of speech. A deferral kept only in the spec's Roads not taken
    dies when promotion deletes the spec, so it has to become a real
    seed. Keep the spec lean and move on.
-5. **Settle any temporary rules.** Ask whether to impose deliberate
-   constraints on this feature: a palette that sharpens the work (no
-   new dependencies, one file, no network, and so on). These are chosen
-   limits, not incidental facts. Record what you agree on; "none" is a
-   fine answer.
+5. **Settle any constraints.** Ask whether to set deliberate limits on
+   this feature that sharpen the work: no new dependencies, one file, no
+   network, and so on. These are chosen limits, not incidental facts.
+   Record what you agree on. "None" is a fine answer.
 6. **Write the spec** once the essence is clear, using
    `docs/sdlight/templates/spec-template.md`. Fill every section,
    including Roads not taken and Constraints. If a section is empty (no
@@ -94,12 +92,9 @@ don't manufacture them.
 
 Confirm the spec's path, then list the seeds you forked by their actual
 committed paths. Report a seed as captured only if its file exists and is
-in the commit, never as a figure of speech. Then stop. The spec is the one place that wants your judgment, so
-this is where the workflow hands back to you: read it, sit with it, and
-plan it with sdlc-plan when you're ready. State the handoff in one line,
-for example "Next: plan it with sdlc-plan when you're ready."
+in the commit. Then stop and hand back to the user in one line, for
+example "Next: plan it with sdlc-plan when you're ready."
 
-Don't start planning in the same breath or run sdlc-plan yourself. From
-the plan onward the pipeline flows on its own, gated at every step by
-review against this spec, which is exactly why the spec is where your
-attention is worth spending.
+Don't start planning or run sdlc-plan yourself. From the plan onward the
+pipeline runs on its own, checked at every step against this spec, so
+the spec is where the user's attention is worth spending.

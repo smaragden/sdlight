@@ -1,112 +1,108 @@
 # sdlight
 
-**A lightweight SDLC for one person and a coding agent.** Ideas go in as
-half-formed sparks. Features come out with documentation that wrote
-itself. The bureaucracy cleans up after itself, so you can stay in the
-part you actually like: solving the problem.
+A lightweight development workflow for one developer and a coding agent.
 
-No extra plugins. Runs on Claude Code and Pi from the same `skills/`.
+You jot ideas down as short notes. When you want to build one, you shape
+it into a spec with the agent. The agent then plans, builds, and reviews
+the work against that spec, and when the feature ships it writes the
+feature's documentation from the code and deletes the notes that led to
+it.
 
-## The journey of an idea
+sdlight is eight agent skills. They run on [Claude Code](https://claude.com/claude-code)
+and [Pi](https://github.com/earendil-works/pi) from the same source and
+need no other plugins.
 
-```mermaid
-flowchart LR
-    idea([💡 spark]):::spark
-    seed[seed-capture]:::auto
-    spec[sdlc-brainstorm<br/>→ spec]:::author
-    plan[sdlc-plan]:::author
-    g1{plan<br/>review}:::gate
-    build[you build,<br/>step by step]:::human
-    g2{step<br/>review}:::gate
-    g3{final<br/>review}:::gate
-    promote[sdlc-promote]:::auto
-    doc([📄 feature doc]):::spark
+## Quick start
 
-    idea --> seed --> spec --> plan --> g1 --> build --> g2
-    g2 -->|next step| build
-    g2 -->|steps done| g3 --> promote --> doc
+In Claude Code:
 
-    classDef spark fill:#fef3c7,stroke:#f59e0b,color:#78350f
-    classDef auto fill:#e0e7ff,stroke:#6366f1,color:#312e81
-    classDef author fill:#dcfce7,stroke:#22c55e,color:#14532d
-    classDef gate fill:#fee2e2,stroke:#ef4444,color:#7f1d1d
-    classDef human fill:#f3f4f6,stroke:#6b7280,color:#111827
+```
+/plugin marketplace add smaragden/sdlight
+/plugin install sdlight@sdlight-marketplace
 ```
 
-It starts as a shower thought. You drop it, half a sentence, and keep
-moving. **seed-capture** files it and gets out of your way. No triage, no
-"is this in scope," no ceremony.
+Then copy this repo's `templates/` folder into `docs/sdlight/templates/`
+in your project. For Pi, see [docs/install.md](docs/install.md).
 
-Later, when you want to build it, **sdlc-brainstorm** turns the seed over
-with you in a real conversation. It weighs two or three genuine routes
-before committing one to a spec. Tangents don't derail the session; they
-get seeded and set aside for another day.
+Now talk to your agent as usual:
 
-The spec becomes a plan (**sdlc-plan**), and here's where sdlight earns
-its keep: **nothing reaches your code without passing a gate.** A
-fresh-eyed reviewer checks the plan against the spec before a line is
-written. You build it one step at a time, and each step is checked
-against the plan it came from. When the last step lands, a final review
-holds the whole thing up against the *spec*, not the plan, to catch
-drift between what you meant and what you made.
+- "Idea: the export command could write CSV." The agent saves it as a seed.
+- "Let's brainstorm the CSV export seed." You talk it through and get a spec.
+- "Plan csv-export." The agent plans, builds, reviews, and ships it.
 
-Pass, and **sdlc-promote** does the satisfying part:
+## How an idea moves through it
 
-```mermaid
-flowchart LR
-    subgraph before["while you build"]
-        s1[seed]:::gone
-        s2[spec]:::gone
-        s3[plan]:::keep
-        s4[code]:::keep
-    end
-    subgraph after["once it ships"]
-        p3[plan · how it was built]:::keep
-        p4[code]:::keep
-        p5[feature doc · what it is]:::keep
-    end
-    before -->|promote| after
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/pipeline-dark.svg">
+  <img alt="The pipeline: an idea becomes a seed, a brainstorm turns it into a spec, you read the spec, then the agent plans, builds step by step, and passes plan, step, and final review before promotion writes the feature doc." src="docs/img/pipeline-light.svg" width="460">
+</picture>
 
-    classDef gone fill:#fee2e2,stroke:#ef4444,color:#7f1d1d,stroke-dasharray:4
-    classDef keep fill:#dcfce7,stroke:#22c55e,color:#14532d
-```
+1. **Capture.** Mention an idea and `seed-capture` saves it as a
+   one-paragraph file in `docs/sdlight/seeds/`. It doesn't judge or expand
+   the idea.
+2. **Brainstorm.** When you want to build it, `sdlc-brainstorm` talks it
+   through with you. Where there's a real choice, it compares two or three
+   approaches before writing a spec. Side ideas that come up become new
+   seeds instead of growing the spec.
+3. **You read the spec.** The workflow stops here. The spec is the one
+   place your judgment matters most.
+4. **Plan.** When you ask, `sdlc-plan` writes a step-by-step plan. A
+   reviewer with fresh context checks it against the spec before any code
+   is written.
+5. **Build.** The agent implements the plan on a feature branch, one
+   commit per step. A reviewer checks each step's diff against that step.
+6. **Final review.** A reviewer checks the finished code against the spec,
+   not the plan, to catch drift between what you meant and what got built.
+7. **Promote.** `sdlc-promote` writes a feature doc from the code as built
+   and deletes the seed and spec. The plan stays as a record of how it was
+   built.
 
-It writes the feature doc from what you actually built, then **deletes
-the seed and the spec.** The scaffolding dissolves. What remains is the
-code and one honest document describing it.
+From step 4 on, the agent runs without asking. It stops only when a
+review needs a human decision. See [docs/workflow.md](docs/workflow.md)
+for the exact stopping points.
 
-Meanwhile **sdlc-refine** quietly gardens the whole vault after every
-brainstorm and every promotion. It merges duplicate seeds, maps how
-your ideas relate, corrects feature docs the code has outgrown, and
-regenerates the project overview. You never file paperwork. It files
-itself.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/lifecycle-dark.svg">
+  <img alt="Promotion deletes the seed and spec, keeps the plan and code, and adds a feature doc." src="docs/img/lifecycle-light.svg" width="460">
+</picture>
+
+After every brainstorm and every promotion, `sdlc-refine` tidies up. It
+merges duplicate seeds, records which ideas relate, fixes feature docs
+the code has since contradicted, and regenerates a project overview.
 
 ## The skills
 
-In pipeline order.
-
 | Skill | What it does |
 |---|---|
-| `seed-capture` | Files a rough idea as `seeds/<slug>.md` and nothing more |
-| `sdlc-brainstorm` | Converges a seed into a spec; forks tangents into new seeds |
-| `sdlc-refine` | Dedupes seeds, maps relations, corrects feature docs, regenerates the overview |
-| `sdlc-plan` | Turns a spec into a plan, then hands it to review |
-| `sdlc-plan-review` | Checks the plan against the spec in fresh context: PASS, GAPS, or HOLD |
+| `seed-capture` | Saves a rough idea as `docs/sdlight/seeds/<slug>.md` |
+| `sdlc-brainstorm` | Turns a seed into a spec, and side ideas into new seeds |
+| `sdlc-refine` | Merges seeds, maps related ideas, fixes stale feature docs, regenerates the overview |
+| `sdlc-plan` | Turns a spec into a plan, then drives review and the build |
+| `sdlc-plan-review` | Checks the plan against the spec: PASS, GAPS, or HOLD |
 | `sdlc-step-review` | Checks one step's diff against that step: PASS or FAIL |
-| `sdlc-final-review` | Checks the implementation against the spec, not the plan |
-| `sdlc-promote` | Writes the feature doc, deletes the seed and spec, commits last |
+| `sdlc-final-review` | Checks the finished code against the spec: PASS, FAIL, or HOLD |
+| `sdlc-promote` | Writes the feature doc and deletes the seed and spec |
 
-Execution itself isn't a skill. You build each step however you like;
-sdlight only owns the gate between steps.
+There is no build skill. The agent writes code with its normal tools, and
+sdlight supplies the review between steps.
 
-## Two platforms, one source
+## Pi extras
 
-Claude Code plugin and Pi package, from the same `skills/` and
-`templates/`. Both implement the same Agent Skills spec (SKILL.md plus
-frontmatter), so the skills are identical. Only the manifest differs.
+On Pi, sdlight also loads a small extension:
 
-- **Install it** → [docs/install.md](docs/install.md)
-- **How it runs** (git, phases, human gates) → [docs/workflow.md](docs/workflow.md)
-- **Where files live** → [docs/layout.md](docs/layout.md)
-- **Model routing** → [docs/model-routing.md](docs/model-routing.md)
-- **Not built yet** → [docs/roadmap.md](docs/roadmap.md)
+- a status line with the number of seeds and how many are uncommitted,
+- `/seeds` to list uncommitted seeds,
+- `/browse-seeds` to scroll through seeds, jump to a random one, and start
+  a brainstorm on it.
+
+## Documentation
+
+- [Install](docs/install.md): Claude Code, Pi, and templates
+- [Workflow](docs/workflow.md): git rules, project phase, when it stops to ask
+- [Layout](docs/layout.md): where files live
+- [Model routing](docs/model-routing.md): which stages use which model
+- [Roadmap](docs/roadmap.md): what's missing
+
+## License
+
+MIT. See [LICENSE](LICENSE).

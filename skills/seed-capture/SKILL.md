@@ -24,16 +24,13 @@ created: <date>
 <the paragraph>
 ```
 
-3. Don't commit on your own. A seed is a note, not a checkpoint: write
-   the file and leave it as an uncommitted change in the working tree.
-   Never move `HEAD` as a side effect of capture. This keeps capture
-   safe mid-session, alongside a concurrent session, and under PR-only /
-   protected-branch rules. Seeds normally enter history later through a
-   real workflow step (a brainstorm that forks or consumes one, or a
-   refine pass). But committing them directly is legitimate when the
-   user wants them to persist beyond this working tree, say a fresh
-   clone, another machine, or a shared roadmap. Do that only when the user
-   explicitly asks; still never auto-commit.
+3. Don't commit. A seed is a note, not a checkpoint: write the file and
+   leave it uncommitted. Never move `HEAD` as a side effect of capture.
+   That keeps capture safe mid-session, next to another session, and on
+   protected branches. Seeds normally enter history later, through a
+   brainstorm that consumes or forks one, or a refine pass. Commit a
+   seed directly only when the user explicitly asks, for example to keep
+   it across clones or machines.
 4. Confirm in one short line that names the file, says it's uncommitted,
    and nudges the user to commit it themselves if they want it to
    persist. For example: "Seeded as `docs/sdlight/seeds/<slug>.md`

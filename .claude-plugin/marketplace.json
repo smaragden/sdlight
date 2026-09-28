@@ -1,7 +1,7 @@
 {
   "name": "sdlight-marketplace",
   "owner": {
-    "name": "Diddi"
+    "name": "smaragden"
   },
   "metadata": {
     "description": "Marketplace for the sdlight plugin."
@@ -10,7 +10,7 @@
     {
       "name": "sdlight",
       "source": "./",
-      "description": "Lightweight SDLC for a solo developer. Seed, spec, plan, feature doc."
+      "description": "A lightweight development workflow for one developer and a coding agent. Seed, spec, plan, feature doc, with review gates."
     }
   ]
 }
