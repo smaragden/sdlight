@@ -39,6 +39,20 @@ boundary marker. The seed file has the detail.
 Concrete, checkable conditions that let a review agent or a human decide
 pass or fail without ambiguity.
 
+## Stages
+Only in an umbrella spec, for a feature too big to ship as one. Delete
+this section in any other spec. The stages in order, one slug per line,
+each shipped as its own feature:
+
+1. <stage-slug>
+2. <stage-slug>
+
+A spec is an umbrella if and only if it has this section, and a stage's
+umbrella is the spec whose Stages lists its slug. Stage seeds and stage
+specs carry no field pointing back to the umbrella. A stage has shipped
+when `docs/sdlight/features/<stage-slug>.md` exists, and the last stage
+is the one whose final review runs while every other stage has shipped.
+
 ## Open questions
 Anything unresolved that a human should weigh in on before or during
 implementation. Empty is fine. It means nothing's blocking.
