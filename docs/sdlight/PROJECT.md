@@ -1,5 +1,5 @@
 ---
-generated: 2026-09-17
+generated: 2026-09-29
 phase: pre-release
 source: derived from docs/sdlight/features/*.md. Only phase is hand-set.
 ---
@@ -24,4 +24,5 @@ The feature ships inside the `seed-counter` pi extension
 components. Selecting a seed hands off to the `sdlc-brainstorm` skill.
 
 ## Open threads
-None.
+- Umbrella specs: spec in progress at
+  [specs/umbrella-seeds-and-order.md](specs/umbrella-seeds-and-order.md).
