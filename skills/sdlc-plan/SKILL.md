@@ -12,6 +12,12 @@ lists anything, stop and put those questions to the user before writing
 a line of the plan. An open question in the spec is the first human
 gate, and planning around it produces a plan that has to be redone.
 
+A spec with a Stages section is an umbrella, and an umbrella is never
+planned. Its stages are. Refuse, and name the next stage: the first slug
+in its Stages list without a feature doc at
+`docs/sdlight/features/<stage-slug>.md`. Tell the user to brainstorm
+that stage with sdlc-brainstorm.
+
 ## Flow
 
 1. Read the spec. Then read the code the feature will touch. Enough to

@@ -12,6 +12,9 @@ the code is. The plan is not the standard. The spec is. A feature can
 follow its plan perfectly and still miss the spec, and that's what this
 gate exists to catch.
 
+If this slug is a stage of an umbrella, also read the umbrella: the spec
+in `docs/sdlight/specs/` whose Stages section lists the slug.
+
 Also read the `phase` line from the frontmatter of
 `docs/sdlight/PROJECT.md`, and nothing else from that file. Missing file
 or missing line means `pre-release`.
@@ -28,6 +31,14 @@ Constraints: confirm the implementation obeys each, with evidence; a
 violation is a FAIL line. If Constraints reads "None", there's nothing
 to check. Then check Non-goals. Confirm the implementation built none of
 them.
+
+Then check the umbrella, if this slug is its last stage. A stage has
+shipped when `docs/sdlight/features/<stage-slug>.md` exists, and this is
+the last stage when every other stage in the umbrella's Stages list has
+shipped. In that case, walk the umbrella's Acceptance criteria too, with
+the same evidence rules. Each unmet umbrella criterion is a FAIL line,
+and each one you cannot verify is a HOLD line, and both name the
+umbrella. For any other stage, the umbrella is context only.
 
 Then apply the phase. In pre-release, breaking behavior that existed
 before this feature is never a finding. Do not list it, do not HOLD on

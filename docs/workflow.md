@@ -18,6 +18,26 @@ Two steps never lead into the next one on their own:
 - **The spec.** Brainstorm writes it and stops. You read it and ask for a
   plan when you're ready.
 
+## Umbrella specs
+
+Some features are too big to ship as one. When a brainstorm finds one,
+it proposes splitting it into stages. If you agree, it writes an
+umbrella spec: a normal spec for the whole, with a Stages section that
+lists the stages in order and acceptance criteria that say when the
+whole is done. It also writes one seed per stage.
+
+Each stage then goes through the pipeline as an ordinary feature, from
+brainstorm to promotion. Brainstorming a stage reads its umbrella for
+context, and warns you if an earlier stage hasn't shipped yet. Planning
+the umbrella itself is refused, and you're pointed to the next stage.
+
+The last stage closes the umbrella. Its final review also checks the
+umbrella's acceptance criteria, and its promotion deletes the umbrella
+spec. Refine then proposes merging the stages' feature docs into one.
+Until then, the project doc lists the umbrella under Open threads with
+how many stages have shipped and which is next. Umbrellas are one level
+deep: a stage that turns out too big adds stages to its umbrella.
+
 ## Git
 
 Every skill that writes a file commits it, using
