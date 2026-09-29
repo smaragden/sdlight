@@ -56,7 +56,8 @@ it doesn't, don't invent them.
    `docs/sdlight/templates/spec-template.md`. Fill every section,
    including Roads not taken and Constraints. If a section is empty (no
    open questions, one obvious route, no constraints), state that under
-   the heading rather than omitting it.
+   the heading rather than omitting it. If the feature is too big to
+   ship as one, write an umbrella spec instead, see Umbrella specs below.
 7. **Save** to `docs/sdlight/specs/<slug>.md`, matching the originating
    seed's slug where there was one.
 8. **Delete the seed this spec came from**, if there was one. The spec
@@ -87,6 +88,36 @@ it doesn't, don't invent them.
   the behavior. In `released`, a spec that changes behavior a feature
   doc documents must say so under Behavior, and say what happens to
   existing users of the old behavior.
+
+## Umbrella specs
+
+Sometimes the conversation shows a feature is too big to ship as one.
+When that happens, propose splitting it into stages, each a feature
+that ships on its own, in order. If the user agrees:
+
+1. Write an umbrella spec at `docs/sdlight/specs/<slug>.md`: every
+   normal section, plus a Stages section listing the stage slugs in
+   order, one per line. Its Acceptance criteria say when the whole is
+   done, not when any one stage is.
+2. Write one seed per stage at `docs/sdlight/seeds/<stage-slug>.md`, in
+   seed-capture's format. Mention the umbrella's slug in the paragraph
+   so a reader knows where it belongs, but add no frontmatter field for
+   it. A stage's umbrella is always found by looking for the spec whose
+   Stages section lists the stage's slug.
+3. Delete the originating seed and commit the umbrella spec and the
+   stage seeds in one commit, message `docs(sdlight): spec <slug>`. The
+   stage seeds count as forked seeds for Flow step 9's check.
+
+Umbrellas are one level deep. When you brainstorm a stage seed:
+
+- Find its umbrella and read it. Keep the stage spec within the
+  umbrella's scope.
+- If an earlier stage in the Stages list has no feature doc at
+  `docs/sdlight/features/<stage-slug>.md`, say once that this stage is
+  out of order, and continue if the user wants to.
+- If the stage turns out too big itself, add stages to the umbrella's
+  Stages list instead of making the stage an umbrella. Write a seed for
+  each new stage, and commit the umbrella change with the stage spec.
 
 ## Ending the session
 
