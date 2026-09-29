@@ -67,10 +67,10 @@ workflow doc.
 - B10. sdlc-refine does not delete a stage seed as covered by its
   umbrella, does not delete an umbrella as stale or superseded while any
   stage has not shipped, and does not propose merging stage feature docs
-  while the umbrella is open. Once the umbrella is gone, it proposes
-  merging its stages' feature docs into one doc named after the umbrella.
-  The umbrella's stage list is not available at that point, so the
-  proposal is based on the stage feature docs themselves.
+  while the umbrella is open. When sdlc-promote closes an umbrella (B9),
+  it passes the umbrella's slug and Stages list to the refine run it
+  starts, and that run proposes merging those stages' feature docs into
+  one doc named after the umbrella.
 - B11. The project doc's Open threads section lists each open umbrella
   with its name, how many of its stages have shipped out of the total,
   and the next stage's slug, all computed from B7.
