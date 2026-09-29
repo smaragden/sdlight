@@ -15,6 +15,8 @@ task, and not an excuse to re-litigate any spec's content.
    - Merge seeds that duplicate or overlap each other into one, and
      delete the rest.
    - Delete seeds that an existing spec or feature doc already covers.
+     Exception: a stage seed is not covered by its umbrella. A stage's
+     umbrella is the spec whose Stages section lists the stage's slug.
    - Seeds that correlate (related, but not duplicates) both stay. Record
      the relationship in each seed's frontmatter as
      `related: [<other-seed-slug>]`.
@@ -25,7 +27,10 @@ task, and not an excuse to re-litigate any spec's content.
      auto-merging. Specs represent committed direction, and merging them
      is a judgment call. Do not merge specs without asking.
    - Delete specs that are stale, meaning a shipped feature doc or another
-     spec has superseded them.
+     spec has superseded them. Exception: an umbrella spec (one with a
+     Stages section) is never stale while any of its stages has not
+     shipped. A stage has shipped when
+     `docs/sdlight/features/<stage-slug>.md` exists.
 3. **Feature docs** (`docs/sdlight/features/`)
    - A feature doc describes the code as it is. Where a newer feature
      doc or the code itself contradicts a statement in an older doc,
@@ -36,6 +41,12 @@ task, and not an excuse to re-litigate any spec's content.
      would describe them better, propose the merge to the user. If
      confirmed, write the merged doc and delete the old ones outright. No
      stubs, no `superseded-by` markers. Git history is the record.
+   - Don't propose merging the feature docs of an open umbrella's stages.
+     They wait until the umbrella closes.
+   - When sdlc-promote has just closed an umbrella, it passes this pass
+     the umbrella's slug and Stages list. Propose merging those stages'
+     feature docs into one doc, `docs/sdlight/features/<umbrella-slug>.md`,
+     with the same confirmation as any other merge.
 4. **Seed map** (`docs/sdlight/SEEDS.md`)
    - A single Mermaid graph of the current seeds, seeds only. Every seed
      in `docs/sdlight/seeds/` is a node, identified by its slug, so
@@ -63,6 +74,10 @@ task, and not an excuse to re-litigate any spec's content.
    - Anchor on the previous version for structure and phrasing. Unchanged
      facts stay worded the same, so diffs show only what
      changed. This is not a blank-page rewrite each time.
+   - In Open threads, list each open umbrella with its name, how many of
+     its stages have shipped out of the total, and the slug of the next
+     stage, the first in its Stages list that has not shipped. Compute
+     all of it from which stage feature docs exist.
    - Copy the `phase` frontmatter line from the previous version
      unchanged. It is the one hand-set field in the file, and a human
      moves it from `pre-release` to `released`. When there is no

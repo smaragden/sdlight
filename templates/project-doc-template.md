@@ -21,7 +21,10 @@ how they relate. Implementation detail lives in the feature docs.
 
 ## Open threads
 Anything active project-wide that isn't yet a feature (in spec or plan
-stage). Pointer only. The spec or plan has the detail.
+stage). Pointer only. The spec or plan has the detail. Each open umbrella
+spec gets one line: its name, how many of its stages have shipped out of
+the total, and the next stage's slug, for example "Umbrella name: 2 of 4
+stages shipped, next `<stage-slug>`".
 
 ---
 Regeneration note for the refinement agent (delete this block in output):
