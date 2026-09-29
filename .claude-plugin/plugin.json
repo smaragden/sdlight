@@ -1,7 +1,7 @@
 {
   "name": "sdlight",
   "description": "A lightweight development workflow for one developer and a coding agent. Seed, spec, plan, feature doc, with review gates.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "smaragden",
     "url": "https://github.com/smaragden"
